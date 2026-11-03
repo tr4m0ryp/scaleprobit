@@ -228,7 +228,9 @@ python examples/quickstart.py                              # one-minute syntheti
 ## License
 
 scaleprobit is **source-available**, licensed under the [PolyForm Noncommercial License 1.0.0](./LICENSE), **not** an
-OSI open-source license. It contains no code derived from a third-party library.
+OSI open-source license. The package contains no code derived from a third-party library; the one third-party
+file, `paper/neurips_2026.sty` (the NeurIPS LaTeX style, unmodified), is only used to build the paper and is not
+covered by this license.
 
 - **You may** use, modify, fork, and share scaleprobit freely for any **noncommercial** purpose, as long as you keep
   the copyright and `Required Notice:` lines (see [`NOTICE`](./NOTICE)) and credit *"scaleprobit by Keygraph, Inc."*

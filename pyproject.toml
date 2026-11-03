@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,7 +7,9 @@ name = "scaleprobit"
 version = "0.1.0"
 description = "Heteroscedastic threshold-crossing probit with a learned log-linear scale and source-centred ridge transfer"
 requires-python = ">=3.10"
-authors = [{ name = "Moussa Ouallaf" }]
+license = "PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Moussa Ouallaf", email = "moussa@husimi.ai" }]
 dependencies = [
     "numpy>=1.23",
     "scipy>=1.9",

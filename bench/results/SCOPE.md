@@ -106,8 +106,9 @@ against the default; numbers are variant - reference, se_total in brackets.
 
 ## Honest reading
 
-The source-centred ridge reliably beats the plain target-only fit (football, synthetic) or ties it
-(hoops), and its lambda path contains the right endpoint. It does not beat the best endpoint on
+The source-centred ridge beats the plain target-only fit on football from 50 games on and in 15 of 20
+synthetic cells, and ties it elsewhere (football at 25 games, every hoops size); its lambda path contains
+the right endpoint. It does not beat the best endpoint on
 these public tasks: with small targets, grouped CV cannot tell a real shift from noise, and on the
 football era shift the target season itself is a poor guide to later seasons. The private result's
 own conclusion (lam* effectively inf, the gain came from the source fit) is reproduced, not surpassed.
