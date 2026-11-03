@@ -42,8 +42,9 @@ the 20 per-draw mean differences.
   test is 2022-2024 as in the spec.
 - **R arms cut:** `glmx::hetglm` (arm 6) and `glmtrans` (arm 9) need R, which is not installed. Our
   plain variant's agreement with a textbook likelihood is covered by the package tests instead.
-- **Ablations cut:** Platt on / off; a free (unpenalised) scale intercept; `lam_x` on groups (no grouped
-  features in these tasks). Kept: lam fixed at 1 / 100 / 1e4, t(4) link, target standardisation.
+- **Ablations cut:** Platt on / off; a free (unpenalised) scale intercept at the subsampled sizes (run
+  afterwards, post hoc, at the full season only: `paper/results/ablate_free_intercept.py`); `lam_x` on groups
+  (no grouped features in these tasks). Kept: lam fixed at 1 / 100 / 1e4, t(4) link, target standardisation.
 - **Sizes and subsamples:** 800 target rows / 400 games is the top of the small-n curve (spec: up to
   800 and "all"); 20 subsamples as in the spec, but the synthetic map uses 20 draws per cell, not a
   finer shift grid.
@@ -72,7 +73,7 @@ the 20 per-draw mean differences.
 - **hoops:** ties with source-only and pooling from 50 games; at 25 games ours loses to source-only by
   +0.0324 (0.0145): CV on 25 games picked lam = 0 or 10 in some subsamples.
 - **gradient boosting fitted on the source only** has the lowest log-loss on both real tasks (football
-  0.4628, hoops 0.4699); ours never beats it beyond SE and loses to it at hoops 50 games.
+  0.4628, hoops 0.4699); ours never beats it beyond SE and loses to it at football 100 games and hoops 25 and 50 games.
 - **synthetic regime map:** ours beats source-only beyond SE at shift 0.3 with n >= 400 rows and at shift
   0.6 with n >= 200 rows (up to -0.0489 (0.0028)); loses at shift 0.1 with 50 / 100 rows (+0.0050 (0.0023),
   +0.0148 (0.0068)) and, by under 0.001, at shift 0 with 400 / 800 rows; ties elsewhere.
@@ -91,16 +92,16 @@ against the default; numbers are variant - reference, se_total in brackets.
    Ties the default everywhere (football +0.0003 (0.0093) / +0.0011 (0.0018) / -0.0019 (0.0018); hoops
    +0.0057 / -0.0004 / +0.0007). **Not kept.**
 2. **Slopes anchored, 10,000x stronger pull on w** (true if the shift is a level shift in a and b only).
-   Worse at 25 games (football +0.0214 (0.0170), hoops -0.0078 (0.0068)), ties after. **Not kept.**
+   Ties the default everywhere (at 25 games football +0.0214 (0.0170), hoops -0.0078 (0.0068)). **Not kept.**
 3. **One-standard-error rule: largest lam within 1 SE of the best CV loss** (true if CV on a few dozen
    groups picks too small a lam by noise). On both real tasks it picks lam = inf in every subsample and so
-   equals source-only: beats the default at football 50 games -0.0053 (0.0027) and 100 games -0.0086 (0.0036),
-   hoops 25 games -0.0324 (0.0145); ties elsewhere. On the synthetic map (`synthetic_one_se.json`) it
+   equals source-only: beats the default beyond SE at football 100 games -0.0086 (0.0036) and hoops 25 games
+   -0.0324 (0.0145); ties elsewhere (football 50 games -0.0053 (0.0027) is just inside the tie band). On the synthetic map (`synthetic_one_se.json`) it
    **loses** where adaptation is real: shift 0.3 n = 800 +0.0077 (0.0014), shift 0.6 n = 50 / 200
    +0.0128 (0.0051) / +0.0138 (0.0065). **Not adopted as the default**; it is a setting for targets of
    about 100 groups or fewer when the shift is believed small, and then it is source-only by another name.
 4. **Repeated grouped CV, 3 shuffled 5-fold splits averaged** (true if the selection noise is
-   fold-assignment noise). Helps at 25 games (football -0.0183 (0.0134), hoops -0.0120 (0.0094), ties),
+   fold-assignment noise). Lower mean at 25 games but a tie (football -0.0183 (0.0134), hoops -0.0120 (0.0094)),
    still loses to source-only (football +0.0051 (0.0023) at 25 games, hoops +0.0204 (0.0082)). **Not kept.**
 
 ## Honest reading

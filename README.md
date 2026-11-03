@@ -7,10 +7,10 @@
   <a href="paper/scaleprobit.pdf"><img alt="Paper PDF" src="https://img.shields.io/badge/Paper-PDF-b31b1b?logo=adobeacrobatreader&logoColor=white"></a>
 </p>
 
-Pulling a heteroscedastic probit's ridge towards a fit on a large related sample, instead of towards zero, cut
-held-out log-loss by **0.027 nats per row (SE 0.008) at 50 target games** on a public football era shift, beat the
-plain target fit beyond SE in **15 of 20** synthetic regimes and **never lost to it**; it did not beat simply using
-the source fit on the two real tasks, and the tables below say so.
+Pulling a heteroscedastic probit's ridge towards a fit on a large related sample, instead of towards zero, beat the
+plain target-only fit by **0.027 nats per row (SE 0.008) at 50 target games** on a public football era shift and
+beyond SE in **15 of 20** synthetic regimes. The gain comes from the **source fit**, not from adapting to the target:
+on both real tasks, simply using the source fit unchanged was as good or better, and the tables below say so.
 
 ```bash
 pip install git+https://github.com/tr4m0ryp/scaleprobit
@@ -39,9 +39,10 @@ blowout slows down. So this package lets the scale depend on features: the scale
 are all zero, you get the old formula back exactly. That makes it a **heteroscedastic probit**: a probit whose noise
 size changes from row to row.
 
-The model works on any yes/no outcome that is decided by a moving quantity crossing a line before a deadline: a
-temperature ending above a mark, a project finishing before a date, a score ending positive. You give it the signed
-distance to the line, the time left, and features that should make the movement bigger or smaller.
+The model works on yes/no outcomes of the same shape as the game: a running total that still drifts, read off once
+when time is up, such as a final score margin, a season's rainfall against its average, or a project's hours against
+its budget. You give it how far the total is from the mark now, how much time is left, and features that should make
+the drift bigger or smaller.
 
 Learning the scale well takes data. With only a few hundred rows, the coefficients `a` and `w` are noisy. The usual
 fix is a ridge penalty, which shrinks them towards zero. But zero means "back to the old formula", and you often know
@@ -57,9 +58,10 @@ with folds that keep related rows together (all rows of one game). The grid alwa
 `lambda = 0` ignores the source and fits the target alone, `lambda = infinity` uses the source fit unchanged. The
 output table therefore tells you directly which of the three won: target alone, source alone, or something between.
 
-What we found: the pull towards the source reliably beats the plain target fit when the target is small. On our two
-real datasets, though, using the source fit unchanged was at least as good, and cross-validation on a few dozen games
-cannot always tell a real difference between source and target from noise.
+What we found: the pull towards the source beats the plain target fit on football from 50 games on and in 15 of 20
+synthetic cells, and ties it on basketball. That gain comes from the source fit: on our two real datasets, using the
+source fit unchanged was at least as good, and cross-validation on a few dozen games cannot always tell a real
+difference between source and target from noise.
 
 ```mermaid
 flowchart LR
@@ -138,8 +140,9 @@ states per game, $`y = 1`$ when the home team wins. Held-out log-loss in nats pe
 
 **Learning curve, football, ours minus target-only:** 25 games -0.0218 (0.0127), tie; 50 games **-0.0265 (0.0077)**;
 100 games **-0.0116 (0.0024)**; 200 games **-0.0098 (0.0022)**. Against source-only it is +0.0053 (0.0027) at 50
-games and loses beyond SE from 100 games on. On basketball every size ties target-only; at 25 games ours trails
-source-only by +0.0324 (0.0145), because CV on 25 games picked $`\lambda = \infty`$ in only 8 of 20 subsamples.
+games, just inside the tie band, and loses beyond SE from 100 games on. On basketball every size ties target-only; at 25 games ours trails
+source-only by +0.0324 (0.0145), because CV on 25 games picked $`\lambda = \infty`$ in only 8 of 20 subsamples; at that size ours is also worse
+than the closed form, +0.0301 (0.0141).
 
 **Calibration (football, full season):** ECE 0.0326 target-only, 0.0297 ours, 0.0155 source-only.
 
@@ -147,8 +150,8 @@ source-only by +0.0324 (0.0145), because CV on 25 games picked $`\lambda = \inft
 15 of 20 cells and never loses; it beats source-only in 5 cells (shift 0.3 or 0.6 with enough rows) and loses in 4
 (small shift).
 
-The pre-registered test (beat target-only, source-only and pooled at once, at some subsampled size) **failed on
-both real datasets**.
+The pre-registered test (all three paired upper 95 % bounds below zero, against target-only, source-only and pooled
+at once, at some subsampled size) **failed on both real datasets**.
 
 ![Paired differences per target size](docs/figures/fig1_paired.png)
 
@@ -174,12 +177,16 @@ both real datasets**.
 ## Limits
 
 - The pre-registered success test failed. We claim a gain over the plain target fit (football, synthetic), not over
-  source-only or pooling, and nothing beyond these two sports and the synthetic generator.
-- LightGBM fitted on the source alone has the lowest log-loss on both real tasks; ours ties it.
+  source-only or pooling, and nothing beyond these two sports and the synthetic generator. The gain comes from the
+  source fit, not from target adaptation.
+- At 25 basketball games ours loses beyond SE to source-only, to the closed form and to LightGBM on the source.
+- LightGBM fitted on the source alone has the lowest log-loss on both real tasks; ours ties it at the full season,
+  never beats it, and loses to it beyond SE at 100 football games and at 25 and 50 basketball games.
 - Four post-hoc variants of the $`\lambda`$ choice (a 13-point grid, slopes anchored, the one-SE rule, repeated CV)
   were tried and none kept; the one-SE rule picked source-only in every real subsample.
 - Cut for budget: a third real dataset, the R arms (`glmx::hetglm`, `glmtrans`), and several ablations. Every cut is
-  listed in [`bench/results/SCOPE.md`](bench/results/SCOPE.md).
+  listed in [`bench/results/SCOPE.md`](bench/results/SCOPE.md). The free scale intercept ablation was run afterwards,
+  post hoc, at the full season only (paper, Table 3).
 
 ## Reproduce
 
