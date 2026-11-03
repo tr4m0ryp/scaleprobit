@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scaleprobit"
+version = "0.1.0"
+description = "Heteroscedastic threshold-crossing probit with a learned log-linear scale and source-centred ridge transfer"
+requires-python = ">=3.10"
+authors = [{ name = "Moussa Ouallaf" }]
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.9",
+    "scikit-learn>=1.3",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[project.optional-dependencies]
+pandas = ["pandas>=1.5"]
+test = ["pytest>=7", "pandas>=1.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
