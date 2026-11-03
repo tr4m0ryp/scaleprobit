@@ -173,6 +173,21 @@ def per_game(o: Out, preds: Path, tag: str) -> None:
     o.m(f"n{tag}FullLamTO", "\\infty" if np.isinf(z["lam_target"]) else f"{float(z['lam_target']):g}")
 
 
+def free_intercept(o: Out, preds: Path, abl: Path, tag: str) -> None:
+    """Post-hoc ablation (ablate_free_intercept.py): ours - free scale intercept, full season, per game."""
+    if not (preds.exists() and abl.exists()):
+        o.c(f"{abl.name} missing: run ablate_free_intercept.py; free-intercept ablation not written")
+        return
+    from scaleprobit.evaluate import paired_block_bootstrap
+    z, a = np.load(preds), np.load(abl)
+    y = z["y"].astype(float)
+    ll = lambda p: -(y * np.log(np.clip(p, 1e-15, 1)) + (1 - y) * np.log(np.clip(1 - p, 1e-15, 1)))
+    bb = paired_block_bootstrap(ll(z["ours_centred_cv"]), ll(a["p"]), blocks=z["game"], n_boot=2000, random_state=0)
+    o.c(f"{abl.name}: ours - free-intercept ablation, paired block bootstrap over test games (2000 draws), its lam")
+    o.m(f"n{tag}FullDiffFreeA", sgn4(bb["mean"])); o.m(f"n{tag}FullSeFreeA", f4(bb["se"]))
+    o.m(f"n{tag}FullLamFreeA", "\\infty" if np.isinf(a["lam"]) else f"{float(a['lam']):g}")
+
+
 def config(o: Out) -> None:
     """Method defaults, read from the package (not results)."""
     import inspect
@@ -196,6 +211,12 @@ def config(o: Out) -> None:
     o.m("nRelMinRows", re.search(r"ok = n >= (\d+)", src("paper/figures/make.py")).group(1))
     o.c("ARMS key abl_ours_t4_link: Student-t degrees of freedom of the link ablation")
     o.m("nTdf", re.search(r"_t(\d+)_link", next(k for k in ARMS if k.endswith("_link"))).group(1))
+    import subprocess
+    import scaleprobit
+    o.c("scaleprobit.__version__; last git commit touching bench/results (the benchmark results used here)")
+    o.m("nPkgVersion", scaleprobit.__version__)
+    o.m("nResultsCommit", subprocess.run(["git", "-C", str(REPO), "log", "-1", "--format=%h", "--", "bench/results"],
+                                         capture_output=True, text=True).stdout.strip() or "unknown")
     o.c("src/scaleprobit/evaluate/_calibration.py: ECE bins")
     o.m("nEceBins", str(inspect.signature(ece).parameters["n_bins"].default))
 
@@ -216,6 +237,7 @@ def main() -> None:
         real(o, a.results / f"{name}.json", tag)
         variants(o, a.results / f"{name}_variants.json", tag)
         per_game(o, a.preds / f"preds_{name}_full.npz", tag)
+        free_intercept(o, a.preds / f"preds_{name}_full.npz", a.preds / f"abl_free_a_{name}.npz", tag)
     synthetic(o, a.results / "synthetic.json", a.results / "synthetic_one_se.json")
     config(o)
     o.c("synthetic grid labels: shift (SYN_S) and target rows (SYN_N) in this script")

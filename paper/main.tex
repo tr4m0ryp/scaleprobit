@@ -40,27 +40,26 @@
 \maketitle
 
 \begin{abstract}
-A heteroscedastic probit, a probit whose noise scale depends on features, cannot pin down its scale coefficients from a few hundred target rows.
-We pull its ridge penalty towards a fit on a large related source sample, and we pick the strength by grouped cross-validation on a grid that holds both endpoints: target-only and source-only.
-On a public football era-shift task this beats the plain target-only fit by \nFbBDiffTO{} nats of log-loss per row (SE \nFbBSeTO) at \nFbBGames{} target games and by \nFbFullDiffTO{} (SE \nFbFullSeTO) with the full \nFbFullGames-game season; on a men's-to-women's basketball task it ties.
-But it does not beat source-only, which is better by \nFbFullDiffSO{} (SE \nFbFullSeSO) on football at the full season and by \nHpADiffSO{} (SE \nHpASeSO) on basketball at \nHpAGames{} games, so our pre-registered test (beat target-only, source-only and pooled at once) failed on both real datasets.
-We pair every comparison on later held-out seasons, average it over \nSubsamples{} target subsamples per size and bootstrap whole test games.
+A heteroscedastic probit, a probit whose noise scale depends on features, estimates its scale coefficients poorly from a few hundred target rows.
+We centre its ridge penalty at a fit on a large related source sample and pick the strength by grouped cross-validation on a grid that holds both endpoints, target-only and source-only.
+Against the plain ridge-at-zero target fit of the same package (\texttt{scaleprobit} \nPkgVersion), on a public football era-shift task with \nFbTestGames{} later test games, log-loss changes by \nFbBDiffTO{} nats per row (SE \nFbBSeTO) at \nFbBGames{} target games and by \nFbFullDiffTO{} (SE \nFbFullSeTO) with the full \nFbFullGames-game season; on a men's-to-women's basketball task (\nHpTestGames{} test games) it ties.
+Source-only stays better, by \nFbFullDiffSO{} (SE \nFbFullSeSO) on football at the full season and \nHpADiffSO{} (SE \nHpASeSO) on basketball at \nHpAGames{} games, so our pre-registered test (beat target-only, source-only and pooled at once) failed on both datasets.
+Differences are paired on the same test rows over \nSubsamples{} target subsamples per size; SEs bootstrap whole test games.
 \end{abstract}
 
 \section{Problem}
 \label{sec:problem}
 
 Many binary outcomes are threshold crossings of a quantity that keeps moving.
-A game ends with the home team ahead or not; a level ends above a mark or not.
-The classic answer is a Brownian closed form \citep{stern1994}: with signed distance $d$ to the threshold, remaining horizon $h$ and base scale $s$, the probability is $\Phi(d / (s\sqrt{h}))$.
+A game ends with the home team ahead or not; a temperature ends above a mark or not.
+The classic answer is a Brownian closed form \citep{stern1994}: with signed distance $d$ to the threshold, remaining horizon $h$ and base scale $s$ (the typical movement per unit of $\sqrt{h}$), the probability is $\Phi(d / (s\sqrt{h}))$.
 Its weak spot is the scale.
 How far the quantity can still move depends on the state of the game, so a heteroscedastic probit \citep{harvey1976} learns the scale as a log-linear function of features, as weather post-processing does \citep{gneiting2005,messner2014}.
 
 We hit the limit of this model when the target sample is small.
-With a few hundred target rows the scale coefficients are not identified, and a plain ridge shrinks them towards zero, which is towards the closed form again.
+With a few hundred target rows the scale coefficients are poorly determined, and a plain ridge shrinks them towards zero, which is towards the closed form again.
 Often a large related sample exists: earlier seasons, another league, another product.
-Fitting on it alone ignores how the target differs.
-Pooling both needs the source rows at fit time.
+Fitting on it alone ignores how the target differs, and pooling needs the source rows at fit time.
 We ask whether a ridge pulled towards the source fit, instead of towards zero, beats all three.
 
 \section{The change}
@@ -108,10 +107,10 @@ $\{0, \nLamGridA, \nLamGridB, \nLamGridC, \nLamGridD, \nLamGridE, \infty\}$ with
 Both endpoints are on the grid: $\lambda = \infty$ returns $\theta_0$ exactly (source-only), and $\lambda = 0$ is the unpenalised target fit started at $\theta_0$ (target-only).
 The CV table therefore shows directly whether adapting to the target paid.
 We fit with L-BFGS-B \citep{byrd1995lbfgsb}, a quasi-Newton solver with box bounds, using an analytic gradient and boxes $|a| \le \nBoundA$, $|w_j|, |b| \le \nBoundW$.
-The gradient is zero on clipped rows, where the loss is flat; a non-zero gradient there stopped the optimiser after one step in an early build.
+The gradient is zero on clipped rows, where the loss is flat.
 
 None of this is new in general.
-A ridge centred at a source fit is MAP adaptation (a prior centred at the old model, \citealp{chelba2006}), biased regularisation \citep{kuzborskij2013} and L2-SP \citep{li2018l2sp}, and \citet{tian2023glmtrans} study GLM transfer with a CV-chosen strength.
+A ridge centred at a source fit is MAP adaptation (a prior centred at the old model, \citealp{chelba2006}), biased regularisation \citep{kuzborskij2013} and L2-SP (an L2 penalty towards pretrained weights, \citealp{li2018l2sp}), and \citet{tian2023glmtrans} study GLM transfer with a CV-chosen strength.
 Our delta is narrow: the heteroscedastic probit with the three choices above, measured against both endpoints.
 Proposition~\ref{prop:slope} restates the classic local argument for this likelihood; the proof is in Appendix~\ref{app:proof}.
 
@@ -122,25 +121,31 @@ The expected excess risk $R(\lambda)$ in the per-row metric $J/n$ has slope $R'(
 So some $\lambda > 0$ beats target-only for any finite $\delta$, and for $\Lambda \succ 0$, $R(\lambda) \to \delta^\top (J/n)\, \delta$ as $\lambda \to \infty$.
 \end{proposition}
 
-So a small pull always helps in the quadratic regime.
+So in the quadratic regime a small pull always lowers the expected risk.
 The proposition does not say cross-validation finds the right $\lambda$ on a few dozen groups, and the likelihood is not convex, so we claim no unique optimum.
+
+\textbf{Using it on other data.}
+The method needs, per row, a binary outcome $y$, a signed distance $d$ to the threshold (positive when $y = 1$ is ahead), a horizon $h > 0$ left until the outcome is decided, a base scale $s > 0$ (one constant is enough, for instance the source's spread of final changes per $\sqrt{h}$) and positive scale features $x$ (we use $z$ = the standardised $\log x$).
+The recipe is three steps: (1) fit the plain variant on the source with $\lambda = \nLamGridA$ and freeze its parameters and standardisation as $\theta_0$; (2) on the target rows, score the grid above by grouped CV, grouping rows that share an outcome; (3) refit the chosen $\lambda$ on all target rows and read the CV table, which says whether target-only, source-only or a point in between won.
+In the package this is \texttt{prior = fit\_source(Xs, ys, distance=ds, horizon=hs, base\_scale=ss)} and then \texttt{ScaleProbitTransferCV(prior=prior).fit(Xt, yt, distance=dt, horizon=ht, base\_scale=st, groups=gt)}; \texttt{cv\_results\_} holds the table.
 
 \section{Setup}
 \label{sec:setup}
 
 \textbf{Data.}
 Football (play-by-play from \citealp{nflverse}): source seasons \nFbSrcYears{} (\nFbSrcGames{} games, \nFbSrcRows{} rows), target pool season \nFbPoolYears{} (\nFbFullGames{} games), test seasons \nFbTestYears{} (\nFbTestGames{} games, \nFbTestRows{} rows).
-The distance is the home margin plus the pregame point spread times the share of the game left (Stern's drift); the \nFbNFeat{} scale features are the remaining time, the margin, timeouts left and the pregame total-points line.
-Basketball \citep{sportsdataverse}: source men's league \nHpSrcYears{} (\nHpSrcGames{} games, \nHpSrcRows{} rows), target pool women's league \nHpPoolYears{} (\nHpFullGames{} games), test \nHpTestYears{} (\nHpTestGames{} games, \nHpTestRows{} rows), \nHpNFeat{} scale features (time, pace, margin).
+In both sports the horizon $h$ is the seconds of regulation left and the base scale $s$ is one constant, the standard deviation of the source's final margins divided by the square root of a full game's seconds, so the closed form is calibrated on the source alone.
+On football the distance $d$ is the home margin plus the pregame point spread times the share of the game left (Stern's drift: the favourite's expected remaining edge counts as distance); the \nFbNFeat{} scale features are the remaining time, the margin, timeouts left and the pregame total-points line.
+Basketball \citep{sportsdataverse}: source men's league \nHpSrcYears{} (\nHpSrcGames{} games, \nHpSrcRows{} rows), target pool women's league \nHpPoolYears{} (\nHpFullGames{} games), test \nHpTestYears{} (\nHpTestGames{} games, \nHpTestRows{} rows); $d$ is the home margin and the \nHpNFeat{} scale features are the remaining time, the scoring rate so far and the margin.
 Each game gives \nFbRowsPerGame{} random game states, and $y = 1$ when the home team wins.
 The test seasons come after every training season, so the football task is an era shift (train on old seasons, test on new ones), and nothing tunes on them.
-A synthetic generator with known truth gives a regime map over \nSynCells{} cells (shift $\times$ target rows, \nSynSeeds{} draws each).
+A synthetic generator with known truth gives a regime map over \nSynCells{} cells (shift $\times$ target rows, \nSynSeeds{} draws each); the shift is the Euclidean length of the difference between the target's and the source's true $\theta$.
 
 \textbf{Arms.}
-Closed form ($\theta = 0$); target-only (plain variant, $\lambda$ by the same CV); source-only; pooled (source and target rows with a domain indicator in the scale); ours.
-Generic learners: logistic regression \citep{pedregosa2011sklearn} target-only and pooled, LightGBM (gradient-boosted trees, \citealp{ke2017lightgbm}) target-only, source-only and fine-tuned from the source booster.
+Closed form ($\theta = 0$, the trivial baseline); target-only (the package's unmodified plain variant at the same version, $\lambda$ by the same CV; this is the upstream the change is measured against); source-only ($\theta_0$ as it is); pooled (source and target rows with a domain indicator in the scale); ours.
+Generic learners: logistic regression \citep{pedregosa2011sklearn} target-only and pooled, on $[u, u z, z]$ (the linearised scale model); LightGBM (gradient-boosted trees, \citealp{ke2017lightgbm}) target-only, source-only and fine-tuned from the source booster, on the raw state variables ($d$, $h$, margin, lines, timeouts or scoring rate, $u$).
 \nAblations{} pre-registered ablations: $\lambda$ fixed at \nLamGridA, \nLamGridC{} and \nLamGridE, a Student-$t$(\nTdf) link, and target standardisation.
-Every arm sees the same target rows; logistic regression picks its penalty and LightGBM its boosting rounds by the same grouped CV.
+Every arm sees the same target rows and the same source rows where it uses any; each picks its one capacity knob by the same \nCvFolds-fold grouped CV on the target rows ($\lambda$, the logistic penalty, or LightGBM's boosting rounds).
 
 \textbf{Metric and SE.}
 The primary metric is held-out log-loss $L = -\tfrac{1}{N}\sum_i [y_i \log p_i + (1-y_i)\log(1-p_i)]$ in nats per row.
@@ -153,7 +158,7 @@ Before the run we pre-registered the primary test: ours against target-only, sou
 \label{sec:results}
 
 Ours beats target-only on football and does not beat source-only anywhere.
-Table~\ref{tab:main} gives the full-season fit, where cross-validation picked $\lambda = \nFbFullLamOurs$ for ours on both datasets, a finite value, so the fit did move away from the source.
+Table~\ref{tab:main} gives the full-season fit, where cross-validation picked $\lambda = \nFbFullLamOurs$ for ours on both datasets, so the fit moved away from the source.
 
 \begin{table}[h]
 \centering
@@ -162,7 +167,7 @@ Table~\ref{tab:main} gives the full-season fit, where cross-validation picked $\
 \label{tab:main}
 \begin{tabular}{lcccc}
 \toprule
-& \multicolumn{2}{c}{Football (\nFbFullGames{} target games)} & \multicolumn{2}{c}{Basketball (\nHpFullGames{} target games)} \\
+& \multicolumn{2}{c}{Football (\nFbFullGames{} target, \nFbTestGames{} test games)} & \multicolumn{2}{c}{Basketball (\nHpFullGames{} target, \nHpTestGames{} test games)} \\
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}
 Arm & log-loss & ours $-$ arm (SE) & log-loss & ours $-$ arm (SE) \\
 \midrule
@@ -183,16 +188,15 @@ LightGBM, fine-tuned & \nFbFullLLGBft & \nFbFullDiffGBft{} (\nFbFullSeGBft) & \n
 
 On football ours lowers the target-only log-loss from \nFbFullLLTO{} to \nFbFullLLOurs, a paired gain of \nFbFullDiffTO{} (SE \nFbFullSeTO).
 But source-only scores \nFbFullLLSO{} and pooling \nFbFullLLPool, both better than ours beyond their SE.
-Our reading is that the finite $\lambda$ lets the fit chase quirks of the single target season, and those quirks are gone in the three test seasons that follow it.
+Our reading: the finite $\lambda$ chases quirks of the single target season that are gone in the three test seasons after it.
 LightGBM fitted on the source alone has the lowest log-loss on both datasets (\nFbFullLLGBs{} and \nHpFullLLGBs); ours ties it.
 Basketball is different.
 The women's league is close to Brownian: the closed form alone scores \nHpFullLLCF{} against \nHpFullLLOurs{} for ours, so the scale has little left to learn.
-
-Figure~\ref{fig:paired} shows the paired difference against the three pre-registered rivals at every target size; Table~\ref{tab:curve} in Appendix~\ref{app:variants} gives the numbers.
+Figure~\ref{fig:paired} shows the paired difference against the three rivals at every target size (numbers in Table~\ref{tab:curve}).
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.8\linewidth]{figures/fig1_paired.pdf}
+\includegraphics[width=0.64\linewidth]{figures/fig1_paired.pdf}
 \caption{Ours beats target-only on football from \nFbBGames{} games on, but source-only and pooling sit at or below it from \nFbBGames{} games on; on basketball everything ties except the \nHpAGames-game loss to source-only. Paired held-out log-loss difference ours $-$ rival, bars are \nCiPct\% intervals ($\pm \nZcrit$ SE).}
 \label{fig:paired}
 \end{figure}
@@ -207,37 +211,26 @@ On football the expected calibration error (ECE, \citealp{guo2017calibration}, t
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.6\linewidth]{figures/fig2_reliability.pdf}
+\includegraphics[width=0.50\linewidth]{figures/fig2_reliability.pdf}
 \caption{Source-only is the best calibrated arm on both datasets; ours sits between it and target-only. Reliability diagrams at the full target season, bins with at least \nRelMinRows{} rows, ECE in the legend.}
 \label{fig:rel}
 \end{figure}
 
-Synthetic data, where the true shift is known, shows when adaptation pays (Figure~\ref{fig:regime}).
+Synthetic data, where the true shift is known, shows when adaptation pays (Figure~\ref{fig:regime} in Appendix~\ref{app:variants}).
 The centred ridge improves on target-only beyond SE in \nSynWinsTO{} of \nSynCells{} cells and never loses to it.
 It overtakes source-only in \nSynWinsSO{} cells, all at shift \nSynShiftC{} or \nSynShiftD{} with enough target rows, and falls behind in \nSynLossSO, where the shift is small.
 All three rivals fall at once in \nSynAllThree{} cell (shift \nSynShiftC, \nSynNE{} rows: \nSynScEDiffTO, \nSynScEDiffSO, \nSynScEDiffPool).
-Which endpoint wins depends on the shift.
-With a small target, grouped CV cannot tell a real shift from noise, and its choice between the endpoints is close to a coin flip.
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.66\linewidth]{figures/fig3_regime.pdf}
-\caption{Ours beats target-only almost everywhere but beats source-only only when the shift is large and the target has enough rows. Synthetic regime map, paired log-loss difference over \nSynSeeds{} draws; plain text marks a tie.}
-\label{fig:regime}
-\end{figure}
-
+Which endpoint wins depends on the shift, and on a small target grouped CV does not reliably tell a real shift from noise (the \nHpAGames-game basketball case above).
 \section{Limits}
 \label{sec:limits}
 
 The pre-registered success test failed on both real datasets.
-The method reliably improves on the plain target fit, but on these tasks the best single choice was to use the source fit as it is.
+The method improves on the plain target fit on football from \nFbBGames{} games on and in \nSynWinsTO{} of \nSynCells{} synthetic cells, and ties it on basketball; on both real tasks the best single choice was to use the source fit as it is.
 We do not claim the method beats source-only or pooling, nor that it generalises beyond these two sports and the synthetic generator.
 
-After the main run we tried \nVariantsTried{} post-hoc variants of the $\lambda$ selection: a \nDenseGrid-point grid, slopes pulled far harder than the intercept, the one-standard-error rule and repeated CV (Appendix~\ref{app:variants}).
-None was kept.
-The one-SE rule picked $\lambda = \infty$ in every real subsample, so it is source-only by another name, and it loses on synthetic cells where the shift is real.
-The \nAblations{} ablations were pre-registered.
-Appendix~\ref{app:repro} lists the cuts and where the method came from.
+After the main run we tried \nVariantsTried{} post-hoc variants of the $\lambda$ selection: a \nDenseGrid-point grid, slopes pulled far harder than the intercept, the one-SE rule (the largest $\lambda$ within one SE of the best CV loss) and repeated CV (Appendix~\ref{app:variants}; cuts in Appendix~\ref{app:repro}).
+None was kept; the one-SE rule is source-only by another name (it picked $\lambda = \infty$ in every real subsample).
+The \nAblations{} ablations in Table~\ref{tab:ablation} were pre-registered; its free-intercept row is post-hoc.
 
 \bibliographystyle{plainnat}
 \bibliography{refs}
@@ -277,7 +270,12 @@ R(\lambda) &= \mathbb{E}\bigl[(m + A^{-1}g)^\top \tfrac{J}{n} (m + A^{-1}g)\bigr
 \end{align*}
 
 \textbf{Need to prove:} $R'(0) = -2\,\mathrm{tr}(J^{-1}\Lambda)/n$.
-$B(\lambda) = \lambda^2\beta(\lambda)$ with $\beta$ smooth at $0$, so $B'(0) = 2\cdot 0\cdot\beta(0) + 0 = 0$. For the variance:
+Choose $\beta(\lambda) = \delta^\top\Lambda A^{-1}\tfrac{J}{n}A^{-1}\Lambda\delta$, so $B(\lambda) = \lambda^2\beta(\lambda)$, with $\beta$ differentiable at $0$ because $A^{-1}$ is (given 5, $A$ invertible above).
+\begin{align*}
+B'(\lambda) &= 2\lambda\,\beta(\lambda) + \lambda^2\beta'(\lambda) && \text{product rule}\\
+B'(0) &= 2\cdot 0\cdot\beta(0) + 0\cdot\beta'(0) = 0 && \text{$\lambda = 0$}
+\end{align*}
+For the variance:
 \begin{align*}
 V'(\lambda) &= \tfrac{1}{n}\bigl[\mathrm{tr}(-A^{-1}\Lambda A^{-1} J A^{-1} J) + \mathrm{tr}(A^{-1} J (-A^{-1}\Lambda A^{-1}) J)\bigr] && \text{product rule, given 5}\\
 V'(0) &= -\tfrac{1}{n}\bigl[\mathrm{tr}(J^{-1}\Lambda J^{-1}J J^{-1}J) + \mathrm{tr}(J^{-1}J J^{-1}\Lambda J^{-1}J)\bigr] && \text{$A = J$ at $\lambda = 0$}\\
@@ -303,12 +301,19 @@ That is the source-only risk. \qed
 \section{Learning curve, ablations and post-hoc variants}
 \label{app:variants}
 
-Table~\ref{tab:curve} gives the numbers behind Figure~\ref{fig:paired}.
+Table~\ref{tab:curve} gives the numbers behind Figure~\ref{fig:paired}, and Figure~\ref{fig:regime} is the synthetic regime map of Section~\ref{sec:results}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.66\linewidth]{figures/fig3_regime.pdf}
+\caption{Ours beats target-only almost everywhere but beats source-only only when the shift is large and the target has enough rows. Synthetic regime map, paired log-loss difference over \nSynSeeds{} draws; plain text marks a tie.}
+\label{fig:regime}
+\end{figure}
 
 \begin{table}[H]
 \centering
 \small
-\caption{No size meets the pre-registered test: ours never beats source-only, and only beats target-only on football. Paired held-out log-loss difference ours $-$ rival (SE) per target size; \textbf{bold} is a win beyond \nZcrit{} SE.}
+\caption{No size meets the pre-registered test: ours never beats source-only, and only beats target-only on football. Paired held-out log-loss difference ours $-$ rival (SE) per target size, mean over \nSubsamples{} target subsamples; \textbf{bold} is a win beyond \nZcrit{} SE.}
 \label{tab:curve}
 \begin{tabular}{rccc}
 \toprule
@@ -332,12 +337,12 @@ all \nHpFullGames & \nHpFullDiffTO{} (\nHpFullSeTO) & \nHpFullDiffSO{} (\nHpFull
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:ablation} removes one design choice at a time at the full season, and Table~\ref{tab:variants} compares the \nVariantsTried{} post-hoc selection variants with the default on the same target subsamples.
+Table~\ref{tab:ablation} removes one design choice at a time at the full season (each of the three choices of Section~\ref{sec:change} has a row: $\lambda$ by CV, source standardisation, the penalised intercept), and Table~\ref{tab:variants} compares the \nVariantsTried{} post-hoc selection variants with the default on the same target subsamples.
 
 \begin{table}[H]
 \centering
 \small
-\caption{Cross-validated $\lambda$ beats fixed small $\lambda$ on football but loses to the fixed large one, which sits next to source-only; source standardisation helps on football. Full target season, ours $-$ ablation (SE).}
+\caption{Cross-validated $\lambda$ beats fixed small $\lambda$ on football but loses to the fixed large one, which sits next to source-only; source standardisation helps on football, and penalising the scale intercept is worth \nFbFullDiffFreeA{} there (about 2 SE). Full target season, ours $-$ ablation (SE); the free-intercept row is a paired bootstrap over test games of one refit.}
 \label{tab:ablation}
 \begin{tabular}{lcc}
 \toprule
@@ -348,6 +353,7 @@ $\lambda = \nLamGridC$ fixed & \nFbFullDiffLamHund{} (\nFbFullSeLamHund) & \nHpF
 $\lambda = \nLamGridE$ fixed & \nFbFullDiffLamTenk{} (\nFbFullSeLamTenk) & \nHpFullDiffLamTenk{} (\nHpFullSeLamTenk) \\
 Student-$t$(\nTdf) link & \nFbFullDiffTfour{} (\nFbFullSeTfour) & \nHpFullDiffTfour{} (\nHpFullSeTfour) \\
 Target standardisation & \nFbFullDiffTstd{} (\nFbFullSeTstd) & \nHpFullDiffTstd{} (\nHpFullSeTstd) \\
+Scale intercept $a$ free (post-hoc) & \nFbFullDiffFreeA{} (\nFbFullSeFreeA) & \nHpFullDiffFreeA{} (\nHpFullSeFreeA) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -383,10 +389,11 @@ Repeated CV & \nHpARepCvMinusOurs{} (\nHpARepCvMinusOursSe) & \nHpBRepCvMinusOur
 
 {\raggedright
 \textbf{Reproduction.} The package is \texttt{scaleprobit} (Python, SciPy L-BFGS-B, \citealp{virtanen2020scipy}).
-The benchmark runs on CPU in \nFbWallS{} s (football), \nHpWallS{} s (basketball) and \nSynWallS{} s (synthetic).
-Commands, from the repository root: \texttt{python -m bench.run\_football}, \texttt{bench.run\_hoops}, \texttt{bench.run\_synthetic}, \texttt{bench.variants.run football|hoops}, \texttt{bench.variants.synthetic\_one\_se}; then \texttt{paper/results/refit\_full.py}, \texttt{paper/results/make\_numbers.py} and \texttt{paper/figures/make.py} regenerate every number and figure in this note.
+Benchmark results are those committed at \texttt{\nResultsCommit} with package version \nPkgVersion; the package is our own, not a vendored library, so there is no upstream diff, and the plain variant in the same package is the unmodified baseline.
+For scale only (one run, one multi-core CPU machine, not a speed claim), the benchmark took \nFbWallS{} s (football), \nHpWallS{} s (basketball) and \nSynWallS{} s (synthetic) of wall time.
+Commands, from the repository root: \texttt{python -m bench.run\_football}, \texttt{bench.run\_hoops}, \texttt{bench.run\_synthetic}, \texttt{bench.variants.run football|hoops}, \texttt{bench.variants.synthetic\_one\_se}; then, with \texttt{PYTHONPATH=src:.}, \texttt{paper/results/refit\_full.py}, \texttt{paper/results/ablate\_free\_intercept.py}, \texttt{paper/results/make\_numbers.py} and \texttt{paper/figures/make.py} regenerate every number and figure in this note.
 The full-season refit reproduces the benchmark log-loss of every scaleprobit arm, and its per-game SE matches the block SE at the full season (\nFbFullSeGameTO{} against \nFbFullSeBlockTO{} on football).
-Cuts, none silent: a third real dataset; the R arms \texttt{glmx::hetglm} \citep{zeileis_glmx} and \texttt{glmtrans}; the Platt, free-intercept and grouped-$\lambda$ ablations; the football source starts later than planned to bound download and fit time.
+Cuts, none silent: a third real dataset; the R arms \texttt{glmx::hetglm} \citep{zeileis_glmx} and \texttt{glmtrans}; the Platt and grouped-$\lambda$ ablations, and the free-intercept ablation at subsampled sizes (it was run afterwards at the full season only); the football source starts later than planned to bound download and fit time.
 Basketball target files carry no usable pregame spread, so neither side uses Stern's drift there.
 LightGBM uses one fixed parameter set; only its rounds are chosen by grouped CV.
 \par}

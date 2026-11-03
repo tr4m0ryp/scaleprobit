@@ -1287,6 +1287,10 @@
 % preds_football_full.npz: lam chosen by grouped CV at the full season (ours / target-only)
 \newcommand{\nFbFullLamOurs}{1000}
 \newcommand{\nFbFullLamTO}{1000}
+% abl_free_a_football.npz: ours - free-intercept ablation, paired block bootstrap over test games (2000 draws), its lam
+\newcommand{\nFbFullDiffFreeA}{$-$0.0008}
+\newcommand{\nFbFullSeFreeA}{0.0004}
+\newcommand{\nFbFullLamFreeA}{1000}
 % hoops.json: n_source_rows / n_source_groups / n_test_rows / n_test_groups
 \newcommand{\nHpSrcRows}{151{,}300}
 \newcommand{\nHpSrcGames}{7{,}565}
@@ -2794,6 +2798,10 @@
 % preds_hoops_full.npz: lam chosen by grouped CV at the full season (ours / target-only)
 \newcommand{\nHpFullLamOurs}{1000}
 \newcommand{\nHpFullLamTO}{1000}
+% abl_free_a_hoops.npz: ours - free-intercept ablation, paired block bootstrap over test games (2000 draws), its lam
+\newcommand{\nHpFullDiffFreeA}{+0.0000}
+\newcommand{\nHpFullSeFreeA}{0.0008}
+\newcommand{\nHpFullLamFreeA}{\infty}
 % synthetic.json: n_seeds, wall_seconds
 \newcommand{\nSynSeeds}{20}
 \newcommand{\nSynWallS}{2{,}628}
@@ -3161,6 +3169,9 @@
 \newcommand{\nRelMinRows}{30}
 % ARMS key abl_ours_t4_link: Student-t degrees of freedom of the link ablation
 \newcommand{\nTdf}{4}
+% scaleprobit.__version__; last git commit touching bench/results (the benchmark results used here)
+\newcommand{\nPkgVersion}{0.1.0}
+\newcommand{\nResultsCommit}{3e8d758}
 % src/scaleprobit/evaluate/_calibration.py: ECE bins
 \newcommand{\nEceBins}{15}
 % synthetic grid labels: shift (SYN_S) and target rows (SYN_N) in this script
