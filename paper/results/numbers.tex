@@ -3152,6 +3152,15 @@
 \newcommand{\nClip}{12}
 \newcommand{\nBoundA}{1.5}
 \newcommand{\nBoundW}{2}
+% bench/common/stats.py: upper95_total = mean + z * se_total (z, interval %)
+\newcommand{\nZcrit}{1.96}
+\newcommand{\nCiPct}{95}
+% bench/variants/arms.py: DENSE = np.logspace(0, 6, N), number of grid points N
+\newcommand{\nDenseGrid}{13}
+% paper/figures/make.py: reliability bins shown only with n >= this many rows
+\newcommand{\nRelMinRows}{30}
+% ARMS key abl_ours_t4_link: Student-t degrees of freedom of the link ablation
+\newcommand{\nTdf}{4}
 % src/scaleprobit/evaluate/_calibration.py: ECE bins
 \newcommand{\nEceBins}{15}
 % synthetic grid labels: shift (SYN_S) and target rows (SYN_N) in this script
