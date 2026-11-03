@@ -27,6 +27,7 @@ LABEL = {"target_only_cv": "target-only", "source_only": "source-only", "pooled_
          "ours_centred_cv": "source-centred (ours)", "closed_form": "closed form"}
 MARK = {"target_only_cv": "o", "source_only": "s", "pooled_indicator": "^"}
 TITLE = {"football": "Football, era shift", "hoops": "Basketball, men's to women's league"}
+SHORT = {"target_only_cv": "target-only", "source_only": "source-only", "ours_centred_cv": "ours"}
 plt.rcParams.update({"font.size": 8, "axes.titlesize": 8, "axes.labelsize": 8, "legend.fontsize": 7,
                      "xtick.labelsize": 7, "ytick.labelsize": 7, "pdf.fonttype": 42, "axes.linewidth": 0.6})
 
@@ -49,7 +50,7 @@ def fig1(results: Path) -> None:
         ax.set_title(TITLE[name])
         ax.grid(axis="y", lw=0.3, color="0.85")
     axes[0].set_ylabel("$\\Delta$ log-loss (nats per row)\n< 0: ours better")
-    axes[0].legend(loc="lower right", frameon=False)
+    axes[0].legend(loc="upper right", frameon=False)
     fig.tight_layout(pad=0.4)
     fig.savefig(HERE / "fig1_paired.pdf")
     plt.close(fig)
@@ -74,11 +75,11 @@ def fig2(preds: Path) -> None:
         for arm in ("target_only_cv", "source_only", "ours_centred_cv"):
             mp, my, ece = _reliability(y, z[arm])
             ax.plot(mp, my, marker=MARK.get(arm, "D"), ms=3, lw=0.9, color=C[arm],
-                    label=f"{LABEL[arm]}, ECE {ece:.3f}")
+                    label=f"{SHORT[arm]}: {ece:.3f}")
         ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.set_aspect("equal")
         ax.set_xlabel("predicted P(home win)")
-        ax.set_title(f"{TITLE[name]}, all {np.unique(z['game']).size} test games" if False else TITLE[name])
-        ax.legend(loc="upper left", frameon=False)
+        ax.set_title(f"{name.replace('hoops', 'basketball').capitalize()}, full target season")
+        ax.legend(loc="upper left", frameon=False, handlelength=1.5, title="ECE (15 bins)", title_fontsize=7)
         ax.grid(lw=0.3, color="0.88")
     axes[0].set_ylabel("observed home-win rate")
     fig.tight_layout(pad=0.4)
