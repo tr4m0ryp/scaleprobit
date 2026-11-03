@@ -78,15 +78,21 @@ def transform_features(F: np.ndarray, transform) -> np.ndarray:
     raise ValueError(f"transform must be 'log', 'identity', None or a callable, got {transform!r}")
 
 
-def standardisation(L: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    """Column means and standard deviations over finite values (std 1 for constant columns)."""
-    if L.shape[1] == 0:
+def standardisation(L: np.ndarray, weight: np.ndarray | None = None) -> tuple[np.ndarray, np.ndarray]:
+    """Column (weighted) means and standard deviations over finite values (std 1 for constant columns)."""
+    k = L.shape[1]
+    if k == 0:
         return np.zeros(0), np.ones(0)
-    with np.errstate(invalid="ignore"):
-        finite = np.where(np.isfinite(L), L, np.nan)
-        mean = np.nan_to_num(np.nanmean(finite, axis=0)) if L.shape[0] else np.zeros(L.shape[1])
-        std = np.nan_to_num(np.nanstd(finite, axis=0)) if L.shape[0] else np.ones(L.shape[1])
-    return mean, np.where(std > 1e-12, std, 1.0)
+    w = np.ones(L.shape[0]) if weight is None else np.asarray(weight, float)
+    ok = np.isfinite(L)
+    W = np.where(ok, w[:, None], 0.0)
+    tot = W.sum(0)
+    safe = np.where(tot > 0, tot, 1.0)
+    Lz = np.where(ok, L, 0.0)
+    mean = (W * Lz).sum(0) / safe
+    var = (W * (Lz - mean) ** 2).sum(0) / safe
+    std = np.sqrt(var)
+    return np.where(tot > 0, mean, 0.0), np.where((tot > 0) & (std > 1e-12), std, 1.0)
 
 
 def standardise(L: np.ndarray, mean: np.ndarray, std: np.ndarray) -> np.ndarray:

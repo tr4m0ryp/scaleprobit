@@ -54,7 +54,7 @@ class ScaleProbitClassifier(ClassifierMixin, BaseEstimator):
     Attributes
     ----------
     theta_ : (k + 2,) fitted ``(a, w, b)``; ``scale_intercept_``, ``coef_``, ``bias_`` its parts.
-    mean_, scale_std_ : feature standardisation used (the prior's when one is given).
+    mean_, scale_std_ : sample-weighted feature standardisation (the prior's when one is given).
     n_iter_, grad_norm_ : optimiser iterations and the gradient norm reached on free coordinates.
     n_scale_terms_ : number of scale features ``k``. ``classes_`` : the two labels.
 
@@ -129,7 +129,7 @@ class ScaleProbitClassifier(ClassifierMixin, BaseEstimator):
             self.mean_, self.scale_std_ = prior.mean.copy(), prior.scale_std.copy()
             centre = prior.theta
         else:
-            self.mean_, self.scale_std_ = core.standardisation(L[valid])
+            self.mean_, self.scale_std_ = core.standardisation(L[valid], weight[valid])
             centre = None
         Z = core.standardise(L, self.mean_, self.scale_std_)
         pen, c, pinned = core.penalty(k, float(self.lam), self._factors(k, inp.feature_names), centre,
