@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -54,6 +55,11 @@ def real(o: Out, path: Path, tag: str) -> dict:
     o.m(f"n{tag}TestRows", intc(d["n_test_rows"])); o.m(f"n{tag}TestGames", intc(d["n_test_groups"]))
     o.c(f"{fn}: meta.rows_per_game, wall_seconds"); o.m(f"n{tag}RowsPerGame", str(d["meta"]["rows_per_game"]))
     o.m(f"n{tag}WallS", intc(round(d["wall_seconds"])))
+    o.c(f"{fn}: meta.source / target_pool / test, year ranges (en-dash)")
+    for key, nm in (("source", "SrcYears"), ("target_pool", "PoolYears"), ("test", "TestYears")):
+        o.m(f"n{tag}{nm}", "--".join(re.search(r"(\d{4}(?:-\d{4})?)", d["meta"][key]).group(1).split("-")))
+    o.c(f"{fn}: len(meta.features) = number of scale features k")
+    o.m(f"n{tag}NFeat", str(len(d["meta"]["features"])))
     o.c(f"{fn}: len(prior_theta) = number of model parameters (a, w_1..w_k, b)")
     o.m(f"n{tag}NParams", str(len(d["prior_theta"])))
     prereg_hits = 0
@@ -167,6 +173,23 @@ def per_game(o: Out, preds: Path, tag: str) -> None:
     o.m(f"n{tag}FullLamTO", "\\infty" if np.isinf(z["lam_target"]) else f"{float(z['lam_target']):g}")
 
 
+def config(o: Out) -> None:
+    """Method defaults, read from the package (not results)."""
+    import inspect
+    from scaleprobit.transfer._cv import DEFAULT_LAMS, ScaleProbitTransferCV
+    from scaleprobit.evaluate._calibration import expected_calibration_error as ece
+    sig = inspect.signature(ScaleProbitTransferCV.__init__).parameters
+    o.c("src/scaleprobit/transfer/_cv.py: DEFAULT_LAMS finite non-zero values (powers of ten), cv folds")
+    for i, lam in enumerate(v for v in DEFAULT_LAMS if 0 < v < np.inf):
+        o.m("nLamGrid" + "ABCDEFG"[i], f"{lam:g}")
+    o.m("nCvFolds", str(sig["cv"].default)); o.m("nLamGridSize", str(len(DEFAULT_LAMS)))
+    o.c("src/scaleprobit/_model.py defaults: clip c, bounds (|a|, |w_j| and |b|)")
+    o.m("nClip", f"{sig['clip'].default:g}")
+    o.m("nBoundA", f"{sig['bounds'].default[0]:g}"); o.m("nBoundW", f"{sig['bounds'].default[1]:g}")
+    o.c("src/scaleprobit/evaluate/_calibration.py: ECE bins")
+    o.m("nEceBins", str(inspect.signature(ece).parameters["n_bins"].default))
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", type=Path, default=REPO / "bench" / "results")
@@ -184,6 +207,14 @@ def main() -> None:
         variants(o, a.results / f"{name}_variants.json", tag)
         per_game(o, a.preds / f"preds_{name}_full.npz", tag)
     synthetic(o, a.results / "synthetic.json", a.results / "synthetic_one_se.json")
+    config(o)
+    o.c("synthetic grid labels: shift (SYN_S) and target rows (SYN_N) in this script")
+    for k, v in SYN_S.items():
+        o.m(f"nSynShift{v[1].upper()}", k)
+    for k, v in SYN_N.items():
+        o.m(f"nSynN{v}", k)
+    o.c("VARS in this script / ARMS ablations (abl_*): post-hoc selection variants tried, pre-registered ablations")
+    o.m("nVariantsTried", str(len(VARS))); o.m("nAblations", str(sum(k.startswith("abl_") for k in ARMS)))
     priv = (a.results / "PRIVATE_LINE.txt").read_text().strip()
     o.c("PRIVATE_LINE.txt: the one permitted sentence about the private application, verbatim")
     o.m("privateline", priv.replace("%", "\\%").replace("->", "$\\to$").replace("~", "$\\sim$"))

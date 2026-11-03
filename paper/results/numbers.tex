@@ -12,6 +12,12 @@
 % football.json: meta.rows_per_game, wall_seconds
 \newcommand{\nFbRowsPerGame}{20}
 \newcommand{\nFbWallS}{856}
+% football.json: meta.source / target_pool / test, year ranges (en-dash)
+\newcommand{\nFbSrcYears}{2009--2017}
+\newcommand{\nFbPoolYears}{2021}
+\newcommand{\nFbTestYears}{2022--2024}
+% football.json: len(meta.features) = number of scale features k
+\newcommand{\nFbNFeat}{4}
 % football.json: len(prior_theta) = number of model parameters (a, w_1..w_k, b)
 \newcommand{\nFbNParams}{6}
 % football.json: sizes.25.n_target_groups
@@ -1289,6 +1295,12 @@
 % hoops.json: meta.rows_per_game, wall_seconds
 \newcommand{\nHpRowsPerGame}{20}
 \newcommand{\nHpWallS}{1{,}376}
+% hoops.json: meta.source / target_pool / test, year ranges (en-dash)
+\newcommand{\nHpSrcYears}{2019--2024}
+\newcommand{\nHpPoolYears}{2019--2022}
+\newcommand{\nHpTestYears}{2023--2025}
+% hoops.json: len(meta.features) = number of scale features k
+\newcommand{\nHpNFeat}{3}
 % hoops.json: len(prior_theta) = number of model parameters (a, w_1..w_k, b)
 \newcommand{\nHpNParams}{5}
 % hoops.json: sizes.25.n_target_groups
@@ -3128,5 +3140,32 @@
 % synthetic_one_se.json: cells.shift=0.6,n=800.one_se_minus_ours_centred_cv.mean_diff / se (10 draws)
 \newcommand{\nSynSdEOneSeMinusOurs}{+0.0044}
 \newcommand{\nSynSdEOneSeMinusOursSe}{0.0029}
+% src/scaleprobit/transfer/_cv.py: DEFAULT_LAMS finite non-zero values (powers of ten), cv folds
+\newcommand{\nLamGridA}{1}
+\newcommand{\nLamGridB}{10}
+\newcommand{\nLamGridC}{100}
+\newcommand{\nLamGridD}{1000}
+\newcommand{\nLamGridE}{10000}
+\newcommand{\nCvFolds}{5}
+\newcommand{\nLamGridSize}{7}
+% src/scaleprobit/_model.py defaults: clip c, bounds (|a|, |w_j| and |b|)
+\newcommand{\nClip}{12}
+\newcommand{\nBoundA}{1.5}
+\newcommand{\nBoundW}{2}
+% src/scaleprobit/evaluate/_calibration.py: ECE bins
+\newcommand{\nEceBins}{15}
+% synthetic grid labels: shift (SYN_S) and target rows (SYN_N) in this script
+\newcommand{\nSynShiftA}{0}
+\newcommand{\nSynShiftB}{0.1}
+\newcommand{\nSynShiftC}{0.3}
+\newcommand{\nSynShiftD}{0.6}
+\newcommand{\nSynNA}{50}
+\newcommand{\nSynNB}{100}
+\newcommand{\nSynNC}{200}
+\newcommand{\nSynND}{400}
+\newcommand{\nSynNE}{800}
+% VARS in this script / ARMS ablations (abl_*): post-hoc selection variants tried, pre-registered ablations
+\newcommand{\nVariantsTried}{4}
+\newcommand{\nAblations}{5}
 % PRIVATE_LINE.txt: the one permitted sentence about the private application, verbatim
 \newcommand{\privateline}{On a proprietary binary forecasting task (a few hundred target training examples; a related source sample more than an order of magnitude larger), centring the ridge at the source fit improved held-out log-loss by 0.0056 nats (0.3161 $\to$ 0.3105) and ECE from 0.030 to 0.027 over the target-only fit chosen by an extensive cross-validated search (paired block-bootstrap SE of the log-loss delta 0.0032, so about 1.7 SE; the 95 \% interval, -0.0120 to +0.0007, includes 0). Cross-validation chose a lambda so large that the fit stayed within 0.003 of the source parameters: at this target size the gain came from the source fit, and target adaptation added nothing measurable. Against an earlier, lightly tuned target-only configuration the difference was within noise (paired SE 0.0005-0.0009).}
