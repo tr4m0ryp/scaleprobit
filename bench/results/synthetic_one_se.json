@@ -1,0 +1,240 @@
+{
+ "se_method": "standard error over independent draws",
+ "n_draws": 10,
+ "cells": {
+  "shift=0.1,n=50": {
+   "chosen_lam": [
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity
+   ],
+   "one_se_minus_ours_centred_cv": {
+    "mean_diff": -0.002009094681255896,
+    "se": 0.0020255567553220145
+   },
+   "one_se_minus_source_only": {
+    "mean_diff": 0.0,
+    "se": 0.0
+   },
+   "one_se_minus_target_only_cv": {
+    "mean_diff": -0.06444216221895505,
+    "se": 0.037060697009463676
+   }
+  },
+  "shift=0.1,n=200": {
+   "chosen_lam": [
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity
+   ],
+   "one_se_minus_ours_centred_cv": {
+    "mean_diff": -0.002106043559728832,
+    "se": 0.0015269573811789758
+   },
+   "one_se_minus_source_only": {
+    "mean_diff": 0.0,
+    "se": 0.0
+   },
+   "one_se_minus_target_only_cv": {
+    "mean_diff": -0.01709444416795903,
+    "se": 0.004863501875626086
+   }
+  },
+  "shift=0.1,n=800": {
+   "chosen_lam": [
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity
+   ],
+   "one_se_minus_ours_centred_cv": {
+    "mean_diff": -0.00019258315009496597,
+    "se": 0.0006123729854286646
+   },
+   "one_se_minus_source_only": {
+    "mean_diff": 0.0,
+    "se": 0.0
+   },
+   "one_se_minus_target_only_cv": {
+    "mean_diff": -0.001806277763288605,
+    "se": 0.001200526365373656
+   }
+  },
+  "shift=0.3,n=50": {
+   "chosen_lam": [
+    Infinity,
+    Infinity,
+    Infinity,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity
+   ],
+   "one_se_minus_ours_centred_cv": {
+    "mean_diff": -0.07698514256386713,
+    "se": 0.06424815187914198
+   },
+   "one_se_minus_source_only": {
+    "mean_diff": -9.28841854911211e-05,
+    "se": 9.288418549112111e-05
+   },
+   "one_se_minus_target_only_cv": {
+    "mean_diff": -0.12896256238429937,
+    "se": 0.05792224083412463
+   }
+  },
+  "shift=0.3,n=200": {
+   "chosen_lam": [
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity
+   ],
+   "one_se_minus_ours_centred_cv": {
+    "mean_diff": -0.002817714909188318,
+    "se": 0.004419512379172031
+   },
+   "one_se_minus_source_only": {
+    "mean_diff": 0.0,
+    "se": 0.0
+   },
+   "one_se_minus_target_only_cv": {
+    "mean_diff": -0.01671595194126675,
+    "se": 0.004871134068789167
+   }
+  },
+  "shift=0.3,n=800": {
+   "chosen_lam": [
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity
+   ],
+   "one_se_minus_ours_centred_cv": {
+    "mean_diff": 0.007696578240998725,
+    "se": 0.0013675861750896022
+   },
+   "one_se_minus_source_only": {
+    "mean_diff": 0.0,
+    "se": 0.0
+   },
+   "one_se_minus_target_only_cv": {
+    "mean_diff": 0.006670879682892389,
+    "se": 0.001708958522127519
+   }
+  },
+  "shift=0.6,n=50": {
+   "chosen_lam": [
+    Infinity,
+    Infinity,
+    Infinity,
+    10.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    100.0,
+    Infinity
+   ],
+   "one_se_minus_ours_centred_cv": {
+    "mean_diff": 0.012753123161104486,
+    "se": 0.005131954276453504
+   },
+   "one_se_minus_source_only": {
+    "mean_diff": -0.0079398893718784,
+    "se": 0.006863731418410624
+   },
+   "one_se_minus_target_only_cv": {
+    "mean_diff": -0.07898593669716476,
+    "se": 0.06624126055744212
+   }
+  },
+  "shift=0.6,n=200": {
+   "chosen_lam": [
+    100.0,
+    Infinity,
+    Infinity,
+    10.0,
+    10.0,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity
+   ],
+   "one_se_minus_ours_centred_cv": {
+    "mean_diff": 0.013770585680591318,
+    "se": 0.006473674387771882
+   },
+   "one_se_minus_source_only": {
+    "mean_diff": -0.019474604055916094,
+    "se": 0.008334469162819273
+   },
+   "one_se_minus_target_only_cv": {
+    "mean_diff": 0.016191706757713604,
+    "se": 0.007990085150624474
+   }
+  },
+  "shift=0.6,n=800": {
+   "chosen_lam": [
+    1000.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0
+   ],
+   "one_se_minus_ours_centred_cv": {
+    "mean_diff": 0.00436407402055145,
+    "se": 0.0028939651939563294
+   },
+   "one_se_minus_source_only": {
+    "mean_diff": -0.04759817317254874,
+    "se": 0.00543177751825744
+   },
+   "one_se_minus_target_only_cv": {
+    "mean_diff": 0.0038700849112159484,
+    "se": 0.0029824772369617465
+   }
+  }
+ }
+}

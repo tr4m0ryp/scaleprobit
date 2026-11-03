@@ -1,0 +1,1015 @@
+{
+ "dataset": "football",
+ "sizes": {
+  "25": {
+   "chosen_lam": {
+    "var_dense_grid": [
+     Infinity,
+     Infinity,
+     Infinity,
+     31.622776601683793,
+     10.0,
+     Infinity,
+     3162.2776601683795,
+     316.22776601683796,
+     100.0,
+     100.0,
+     Infinity,
+     Infinity,
+     3162.2776601683795,
+     1000.0,
+     31.622776601683793,
+     Infinity,
+     Infinity,
+     Infinity,
+     10000.0,
+     Infinity
+    ],
+    "var_slopes_anchored": [
+     Infinity,
+     Infinity,
+     Infinity,
+     0.0,
+     0.0,
+     Infinity,
+     Infinity,
+     100.0,
+     31.622776601683793,
+     1000000.0,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     3162.2776601683795,
+     Infinity
+    ],
+    "var_one_se": [
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity
+    ],
+    "var_repeated_cv": [
+     Infinity,
+     Infinity,
+     Infinity,
+     316.22776601683796,
+     316.22776601683796,
+     Infinity,
+     Infinity,
+     316.22776601683796,
+     Infinity,
+     Infinity,
+     10000.0,
+     Infinity,
+     3162.2776601683795,
+     316.22776601683796,
+     100.0,
+     1000.0,
+     Infinity,
+     Infinity,
+     31622.776601683792,
+     100.0
+    ]
+   },
+   "arms": {
+    "var_dense_grid": {
+     "log_loss": 0.4885623379308838,
+     "brier": 0.15727799231663114,
+     "ece": 0.032788840758331536,
+     "calibration_slope": 0.8734799706761199,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": 0.00031375621069803757,
+       "se_block": 0.0006291007728798538,
+       "ci95_block": [
+        -0.0008679667990969285,
+        0.0016040152498004495
+       ],
+       "p_diff_nonneg": 0.68,
+       "sd_between_subsamples": 0.04158280436817021,
+       "se_total": 0.0093194553885146,
+       "upper95_total": 0.018579888772186654,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 2
+      },
+      "source_only": {
+       "mean_diff": 0.023757191739174816,
+       "se_block": 0.0027946078731192893,
+       "ci95_block": [
+        0.01836746861259376,
+        0.029432040498233735
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.05091262204453387,
+       "se_total": 0.01172239682560602,
+       "upper95_total": 0.046733089517362617,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.02151681003949848,
+       "se_block": 0.0029203406240214864,
+       "ci95_block": [
+        -0.027519137849398724,
+        -0.016306629286382084
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.030475711060261423,
+       "se_total": 0.0074139623408631655,
+       "upper95_total": -0.006985443851406677,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 18
+      }
+     }
+    },
+    "var_slopes_anchored": {
+     "log_loss": 0.5096380453986444,
+     "brier": 0.15931603927907156,
+     "ece": 0.03545041801108218,
+     "calibration_slope": 0.8847076553865996,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": 0.02138946367845868,
+       "se_block": 0.0017235908477647908,
+       "ci95_block": [
+        0.018178733409872146,
+        0.024937327698925232
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.07583841108583524,
+       "se_total": 0.01704535113195693,
+       "upper95_total": 0.054798351897094255,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 5
+      },
+      "source_only": {
+       "mean_diff": 0.04483289920693546,
+       "se_block": 0.003692799955067588,
+       "ci95_block": [
+        0.037637072137502864,
+        0.05240024772093992
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.13567069585737573,
+       "se_total": 0.03056081898819753,
+       "upper95_total": 0.10473210442380262,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.0004411025717378405,
+       "se_block": 0.003162859281420797,
+       "ci95_block": [
+        -0.006750228670561783,
+        0.005450774337983228
+       ],
+       "p_diff_nonneg": 0.451,
+       "sd_between_subsamples": 0.12341326030894723,
+       "se_total": 0.0277767046252479,
+       "upper95_total": 0.05400123849374804,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 18
+      }
+     }
+    },
+    "var_one_se": {
+     "log_loss": 0.464805146191709,
+     "brier": 0.15373434876172534,
+     "ece": 0.015478232448180983,
+     "calibration_slope": 0.9839561231514734,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": -0.02344343552847678,
+       "se_block": 0.0024874677854602937,
+       "ci95_block": [
+        -0.028535983647447104,
+        -0.018679459880386173
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.06113239421443009,
+       "se_total": 0.013894098643061629,
+       "upper95_total": 0.003788997811924013,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 9
+      },
+      "source_only": {
+       "mean_diff": 0.0,
+       "se_block": 0.0,
+       "ci95_block": [
+        0.0,
+        0.0
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.0,
+       "se_total": 0.0,
+       "upper95_total": 0.0,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.0452740017786733,
+       "se_block": 0.004988823649547129,
+       "ci95_block": [
+        -0.05523172863581348,
+        -0.03596839504088109
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.044936535638672906,
+       "se_total": 0.011218421153021789,
+       "upper95_total": -0.023285896318750596,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 20
+      }
+     }
+    },
+    "var_repeated_cv": {
+     "log_loss": 0.46991569178787973,
+     "brier": 0.1547199081707845,
+     "ece": 0.023623074375021515,
+     "calibration_slope": 0.9439404906405999,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": -0.018332889932306015,
+       "se_block": 0.001743219361770092,
+       "ci95_block": [
+        -0.02189537440536769,
+        -0.015040539299205504
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.05923670261994098,
+       "se_total": 0.013359946130408471,
+       "upper95_total": 0.007852604483294588,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 7
+      },
+      "source_only": {
+       "mean_diff": 0.005110545596170767,
+       "se_block": 0.0008261761181596039,
+       "ci95_block": [
+        0.003538345991502545,
+        0.006730715163986138
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.00944867137342831,
+       "se_total": 0.0022685758780277665,
+       "upper95_total": 0.009556954317105189,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.040163456182502534,
+       "se_block": 0.0042712740364473116,
+       "ci95_block": [
+        -0.048758070254749104,
+        -0.03218803954165587
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.0390112269496233,
+       "se_total": 0.009712753126697891,
+       "upper95_total": -0.021126460054174668,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 20
+      }
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.4882485817201858,
+     "brier": 0.15746867129940528,
+     "ece": 0.032529488398361145,
+     "calibration_slope": 0.8864852188057855
+    },
+    "source_only": {
+     "log_loss": 0.464805146191709,
+     "brier": 0.15373434876172534,
+     "ece": 0.015478232448180983,
+     "calibration_slope": 0.9839561231514734
+    },
+    "target_only_cv": {
+     "log_loss": 0.5100791479703821,
+     "brier": 0.15988644061027762,
+     "ece": 0.05291407207250372,
+     "calibration_slope": 0.8873169556306035
+    }
+   }
+  },
+  "50": {
+   "chosen_lam": {
+    "var_dense_grid": [
+     316.22776601683796,
+     1000.0,
+     Infinity,
+     1000.0,
+     3162.2776601683795,
+     1000.0,
+     316.22776601683796,
+     Infinity,
+     100.0,
+     Infinity,
+     3162.2776601683795,
+     316.22776601683796,
+     Infinity,
+     3162.2776601683795,
+     316.22776601683796,
+     Infinity,
+     Infinity,
+     1000.0,
+     1000.0,
+     316.22776601683796
+    ],
+    "var_slopes_anchored": [
+     316.22776601683796,
+     1000.0,
+     100000.0,
+     Infinity,
+     3162.2776601683795,
+     316.22776601683796,
+     316.22776601683796,
+     Infinity,
+     Infinity,
+     1000.0,
+     Infinity,
+     Infinity,
+     Infinity,
+     3162.2776601683795,
+     316.22776601683796,
+     Infinity,
+     Infinity,
+     1000.0,
+     100.0,
+     316.22776601683796
+    ],
+    "var_one_se": [
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity
+    ],
+    "var_repeated_cv": [
+     316.22776601683796,
+     1000.0,
+     31622.776601683792,
+     Infinity,
+     Infinity,
+     3162.2776601683795,
+     316.22776601683796,
+     Infinity,
+     100000.0,
+     Infinity,
+     1000.0,
+     100.0,
+     31.622776601683793,
+     Infinity,
+     316.22776601683796,
+     1000.0,
+     Infinity,
+     Infinity,
+     3162.2776601683795,
+     316.22776601683796
+    ]
+   },
+   "arms": {
+    "var_dense_grid": {
+     "log_loss": 0.47121046616354156,
+     "brier": 0.1553232936345065,
+     "ece": 0.029348338464245304,
+     "calibration_slope": 0.945831277789234,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": 0.0011471276244777774,
+       "se_block": 0.0003380411516135783,
+       "ci95_block": [
+        0.0005090854732599493,
+        0.0018241850896385822
+       ],
+       "p_diff_nonneg": 0.9995,
+       "sd_between_subsamples": 0.007793135428284057,
+       "se_total": 0.0017750830432301022,
+       "upper95_total": 0.004626290389208778,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 2
+      },
+      "source_only": {
+       "mean_diff": 0.006405319971832651,
+       "se_block": 0.0014176950733956872,
+       "ci95_block": [
+        0.003669422688953961,
+        0.009141897277121015
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.010497418867093856,
+       "se_total": 0.0027421979258783103,
+       "upper95_total": 0.01178002790655414,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 1
+      },
+      "target_only_cv": {
+       "mean_diff": -0.0253639770516426,
+       "se_block": 0.0033395291058353946,
+       "ci95_block": [
+        -0.03210942654721438,
+        -0.019036550306616475
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.03262858853300975,
+       "se_total": 0.008023945047889131,
+       "upper95_total": -0.009637044757779902,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 18
+      }
+     }
+    },
+    "var_slopes_anchored": {
+     "log_loss": 0.46887712267000037,
+     "brier": 0.15517595412519206,
+     "ece": 0.030770423055660828,
+     "calibration_slope": 0.991024024698255,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": -0.001186215869063396,
+       "se_block": 0.000952453427340759,
+       "ci95_block": [
+        -0.0030838173785925557,
+        0.0006566965177336459
+       ],
+       "p_diff_nonneg": 0.1035,
+       "sd_between_subsamples": 0.012838451697340778,
+       "se_total": 0.003024642066509817,
+       "upper95_total": 0.004742082581295845,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 7
+      },
+      "source_only": {
+       "mean_diff": 0.004071976478291478,
+       "se_block": 0.0013027341947440831,
+       "ci95_block": [
+        0.0015137193719935126,
+        0.006664729278561293
+       ],
+       "p_diff_nonneg": 0.9985,
+       "sd_between_subsamples": 0.006472653536198014,
+       "se_total": 0.0019472746524664536,
+       "upper95_total": 0.007888634797125727,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 1
+      },
+      "target_only_cv": {
+       "mean_diff": -0.02769732054518377,
+       "se_block": 0.0040537360284192804,
+       "ci95_block": [
+        -0.03591126665203091,
+        -0.019868983112541105
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.03463563424253255,
+       "se_total": 0.008741517817703581,
+       "upper95_total": -0.010563945622484753,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 19
+      }
+     }
+    },
+    "var_one_se": {
+     "log_loss": 0.464805146191709,
+     "brier": 0.15373434876172534,
+     "ece": 0.015478232448180983,
+     "calibration_slope": 0.9839561231514734,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": -0.005258192347354874,
+       "se_block": 0.0012457824741120282,
+       "ci95_block": [
+        -0.007679990262570901,
+        -0.0028560273376635704
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.01089731388085266,
+       "se_total": 0.0027367035761470203,
+       "upper95_total": 0.00010574666189328528,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 13
+      },
+      "source_only": {
+       "mean_diff": 0.0,
+       "se_block": 0.0,
+       "ci95_block": [
+        0.0,
+        0.0
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.0,
+       "se_total": 0.0,
+       "upper95_total": 0.0,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.03176929702347525,
+       "se_block": 0.004245284699261283,
+       "ci95_block": [
+        -0.04048159650835187,
+        -0.023534965897779876
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.0329995416025591,
+       "se_total": 0.008512985931900358,
+       "upper95_total": -0.01508384459695055,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 20
+      }
+     }
+    },
+    "var_repeated_cv": {
+     "log_loss": 0.4771409637100084,
+     "brier": 0.15581056972508261,
+     "ece": 0.031170957793221203,
+     "calibration_slope": 0.9238467921201959,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": 0.007077625170944497,
+       "se_block": 0.0008665269745767304,
+       "ci95_block": [
+        0.005481450508622224,
+        0.008851086470721364
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.03253174433918759,
+       "se_total": 0.007325748322538954,
+       "upper95_total": 0.021436091883120845,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 6
+      },
+      "source_only": {
+       "mean_diff": 0.012335817518299371,
+       "se_block": 0.002029247061149113,
+       "ci95_block": [
+        0.008354930020950143,
+        0.01630376379849813
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.031133437661312692,
+       "se_total": 0.00725137164029844,
+       "upper95_total": 0.02654850593328431,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.01943347950517588,
+       "se_block": 0.0027340933727962972,
+       "ci95_block": [
+        -0.02507437296411088,
+        -0.014244543985026356
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.019149800716168106,
+       "se_total": 0.005080453714444828,
+       "upper95_total": -0.009475790224864018,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 18
+      }
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.47006333853906385,
+     "brier": 0.1546970391768583,
+     "ece": 0.024878622728931255,
+     "calibration_slope": 0.9446656459810413
+    },
+    "source_only": {
+     "log_loss": 0.464805146191709,
+     "brier": 0.15373434876172534,
+     "ece": 0.015478232448180983,
+     "calibration_slope": 0.9839561231514734
+    },
+    "target_only_cv": {
+     "log_loss": 0.49657444321518424,
+     "brier": 0.15822316672826114,
+     "ece": 0.0448931743537226,
+     "calibration_slope": 0.841332144072253
+    }
+   }
+  },
+  "100": {
+   "chosen_lam": {
+    "var_dense_grid": [
+     1000.0,
+     Infinity,
+     Infinity,
+     316.22776601683796,
+     Infinity,
+     1000.0,
+     316.22776601683796,
+     10000.0,
+     1000.0,
+     10000.0,
+     3162.2776601683795,
+     316.22776601683796,
+     Infinity,
+     1000.0,
+     1000.0,
+     Infinity,
+     1000.0,
+     316.22776601683796,
+     316.22776601683796,
+     100.0
+    ],
+    "var_slopes_anchored": [
+     Infinity,
+     1000000.0,
+     Infinity,
+     1000.0,
+     Infinity,
+     316.22776601683796,
+     0.0,
+     1000.0,
+     316.22776601683796,
+     Infinity,
+     10000.0,
+     316.22776601683796,
+     Infinity,
+     3162.2776601683795,
+     316.22776601683796,
+     Infinity,
+     1000.0,
+     1000.0,
+     316.22776601683796,
+     100.0
+    ],
+    "var_one_se": [
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity,
+     Infinity
+    ],
+    "var_repeated_cv": [
+     1000.0,
+     Infinity,
+     31622.776601683792,
+     1000.0,
+     Infinity,
+     Infinity,
+     Infinity,
+     3162.2776601683795,
+     3162.2776601683795,
+     Infinity,
+     1000.0,
+     1000.0,
+     Infinity,
+     1000.0,
+     1000.0,
+     Infinity,
+     Infinity,
+     316.22776601683796,
+     316.22776601683796,
+     316.22776601683796
+    ]
+   },
+   "arms": {
+    "var_dense_grid": {
+     "log_loss": 0.4714850290858405,
+     "brier": 0.15542320665715897,
+     "ece": 0.030094815107292304,
+     "calibration_slope": 0.9259869667280114,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": -0.001880951050968642,
+       "se_block": 0.00041766438021869896,
+       "ci95_block": [
+        -0.0027452650165462264,
+        -0.0011335494620056815
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.007757537265759794,
+       "se_total": 0.001784212082681335,
+       "upper95_total": 0.0016161046310867744,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 3
+      },
+      "source_only": {
+       "mean_diff": 0.006679882894131606,
+       "se_block": 0.0018459259917007636,
+       "ci95_block": [
+        0.003227259445543695,
+        0.010465541904224497
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.009182976902805536,
+       "se_total": 0.002761122236828613,
+       "upper95_total": 0.012091682478315689,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.01346077721111701,
+       "se_block": 0.002242136702132702,
+       "ci95_block": [
+        -0.018099446010774244,
+        -0.00924711691754387
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.008888043507844138,
+       "se_total": 0.002996171367081166,
+       "upper95_total": -0.007588281331637924,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 19
+      }
+     }
+    },
+    "var_slopes_anchored": {
+     "log_loss": 0.47292502030484507,
+     "brier": 0.15555451479987994,
+     "ece": 0.03165028686833192,
+     "calibration_slope": 0.9412463551886603,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": -0.0004409598319642242,
+       "se_block": 0.0006754522741861045,
+       "ci95_block": [
+        -0.0018600322022646865,
+        0.0008309492261820033
+       ],
+       "p_diff_nonneg": 0.248,
+       "sd_between_subsamples": 0.013242191652484777,
+       "se_total": 0.0030371068079275802,
+       "upper95_total": 0.0055117695115738325,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 9
+      },
+      "source_only": {
+       "mean_diff": 0.008119874113136024,
+       "se_block": 0.0018363125994797452,
+       "ci95_block": [
+        0.004690901996186638,
+        0.011844442067083672
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.018183959410313366,
+       "se_total": 0.004461486630575538,
+       "upper95_total": 0.016864387909064076,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.012020785992112594,
+       "se_block": 0.002523863028218168,
+       "ci95_block": [
+        -0.0172014354720355,
+        -0.007180065447152326
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.012834755162562465,
+       "se_total": 0.0038218361541741655,
+       "upper95_total": -0.00452998712993123,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 18
+      }
+     }
+    },
+    "var_one_se": {
+     "log_loss": 0.464805146191709,
+     "brier": 0.15373434876172534,
+     "ece": 0.015478232448180983,
+     "calibration_slope": 0.9839561231514734,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": -0.008560833945100248,
+       "se_block": 0.0020305237933996795,
+       "ci95_block": [
+        -0.0127622877336477,
+        -0.00479962246904067
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.013174671359850142,
+       "se_total": 0.0035779358780678285,
+       "upper95_total": -0.0015480796240873044,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 15
+      },
+      "source_only": {
+       "mean_diff": 0.0,
+       "se_block": 0.0,
+       "ci95_block": [
+        0.0,
+        0.0
+       ],
+       "p_diff_nonneg": 1.0,
+       "sd_between_subsamples": 0.0,
+       "se_total": 0.0,
+       "upper95_total": 0.0,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.020140660105248613,
+       "se_block": 0.0036976463848130557,
+       "ci95_block": [
+        -0.027545481974699138,
+        -0.013350993346290833
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.012683465219262835,
+       "se_total": 0.004660054000280851,
+       "upper95_total": -0.011006954264698145,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 20
+      }
+     }
+    },
+    "var_repeated_cv": {
+     "log_loss": 0.4690699366459835,
+     "brier": 0.1548154229799284,
+     "ece": 0.02634902507952801,
+     "calibration_slope": 0.9469176087528064,
+     "paired_variant_minus_ref": {
+      "ours_centred_cv": {
+       "mean_diff": -0.004296043490825583,
+       "se_block": 0.0008628267166000587,
+       "ci95_block": [
+        -0.006063338562263923,
+        -0.002707556980997629
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.00979550384127433,
+       "se_total": 0.0023541590256607233,
+       "upper95_total": 0.000318108199469435,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 8
+      },
+      "source_only": {
+       "mean_diff": 0.004264790454274666,
+       "se_block": 0.0013674722267526895,
+       "ci95_block": [
+        0.0017091605859089532,
+        0.007082083557318115
+       ],
+       "p_diff_nonneg": 0.9985,
+       "sd_between_subsamples": 0.006087971942540418,
+       "se_total": 0.0019295466850008907,
+       "upper95_total": 0.008046701956876411,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 0
+      },
+      "target_only_cv": {
+       "mean_diff": -0.015875869650973953,
+       "se_block": 0.0025898174425469087,
+       "ci95_block": [
+        -0.021231536960400324,
+        -0.011012956411537407
+       ],
+       "p_diff_nonneg": 0.0,
+       "sd_between_subsamples": 0.010572788510176881,
+       "se_total": 0.003506614782060702,
+       "upper95_total": -0.009002904678134978,
+       "n_subsamples": 20,
+       "n_test_rows": 17040,
+       "n_test_groups": 852,
+       "subsample_wins": 20
+      }
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.4733659801368092,
+     "brier": 0.15547679209680731,
+     "ece": 0.029757578228637248,
+     "calibration_slope": 0.9117651889651077
+    },
+    "source_only": {
+     "log_loss": 0.464805146191709,
+     "brier": 0.15373434876172534,
+     "ece": 0.015478232448180983,
+     "calibration_slope": 0.9839561231514734
+    },
+    "target_only_cv": {
+     "log_loss": 0.48494580629695755,
+     "brier": 0.157140639418076,
+     "ece": 0.03965720691832238,
+     "calibration_slope": 0.8459783215589687
+    }
+   }
+  }
+ },
+ "se_method": "as in the main results",
+ "wall_seconds": 711.3351664543152
+}

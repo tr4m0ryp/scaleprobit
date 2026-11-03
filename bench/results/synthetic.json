@@ -1,0 +1,3521 @@
+{
+ "dataset": "synthetic",
+ "shifts": [
+  0.0,
+  0.1,
+  0.3,
+  0.6
+ ],
+ "sizes": [
+  50,
+  100,
+  200,
+  400,
+  800
+ ],
+ "n_seeds": 20,
+ "se_method": "standard error over independent draws (seeds) of the per-draw mean difference",
+ "cells": {
+  "shift=0,n=50": {
+   "chosen_lam_ours": [
+    Infinity,
+    100.0,
+    Infinity,
+    100.0,
+    Infinity,
+    10.0,
+    Infinity,
+    100.0,
+    1000.0,
+    Infinity,
+    100.0,
+    Infinity,
+    100.0,
+    100.0,
+    10.0,
+    10.0,
+    100.0,
+    100.0,
+    10.0,
+    1.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.36006258161550514,
+     "brier": 0.10750826433876778,
+     "ece": 0.025219219877992177,
+     "calibration_slope": 0.7830674381269803,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.01330119019217819,
+      "se": 0.01696594149147838,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.4385903755544735,
+     "brier": 0.11272323450271633,
+     "ece": 0.054708071428834694,
+     "calibration_slope": 0.8324420704392107,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.09182898413114662,
+      "se": 0.024885223111156908,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3232013000433193,
+     "brier": 0.10345296843603094,
+     "ece": 0.014681955593762373,
+     "calibration_slope": 0.9920102759121432,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.02356009138000765,
+      "se": 0.016918369792215837,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.34676139142332696,
+     "brier": 0.10524422084817733,
+     "ece": 0.025602678680233765,
+     "calibration_slope": 0.90494857441569
+    },
+    "pooled_indicator": {
+     "log_loss": 0.42312507941881733,
+     "brier": 0.10824366761772475,
+     "ece": 0.045776043393201474,
+     "calibration_slope": 1.0092507945483666,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.07636368799549044,
+      "se": 0.07594927693459877,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.48371776444112147,
+     "brier": 0.11781879894474497,
+     "ece": 0.06832535330455419,
+     "calibration_slope": 0.5817918022652706,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.13695637301779456,
+      "se": 0.023745092708726573,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3243470645242069,
+     "brier": 0.10366369751033835,
+     "ece": 0.017132376432227033,
+     "calibration_slope": 0.9906362671945848,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.02241432689912004,
+      "se": 0.016878191397944355,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 6
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.32320199907421354,
+     "brier": 0.10345296276624802,
+     "ece": 0.014694178918152678,
+     "calibration_slope": 0.9921270930471715,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.023559392349113396,
+      "se": 0.016917970388081113,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 3
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3358631381932807,
+     "brier": 0.10512486344873243,
+     "ece": 0.0267183808037111,
+     "calibration_slope": 0.9528669411984693,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.010898253230046303,
+      "se": 0.009012899491059259,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.34699257632750624,
+     "brier": 0.10544699971106468,
+     "ece": 0.02860712175667453,
+     "calibration_slope": 0.8941415244334016,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0002311849041793667,
+      "se": 0.0029955824446056063,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.4186673146413492,
+     "brier": 0.12839464988907337,
+     "ece": 0.070088119559341,
+     "calibration_slope": 1.2282987631929996,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.07190592321802221,
+      "se": 0.025176591385477662,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3230046177619839,
+     "brier": 0.10341739925548281,
+     "ece": 0.014766244904091116,
+     "calibration_slope": 0.9908851171463526,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.023756773661343128,
+      "se": 0.01694777444189784,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    }
+   }
+  },
+  "shift=0,n=100": {
+   "chosen_lam_ours": [
+    Infinity,
+    Infinity,
+    100.0,
+    10.0,
+    Infinity,
+    Infinity,
+    100.0,
+    10.0,
+    1.0,
+    Infinity,
+    10.0,
+    100.0,
+    10.0,
+    Infinity,
+    Infinity,
+    100.0,
+    Infinity,
+    100.0,
+    Infinity,
+    Infinity
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3580538164767674,
+     "brier": 0.1068895923653328,
+     "ece": 0.024655312471388573,
+     "calibration_slope": 0.785725169743002,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.016311311537431147,
+      "se": 0.013472761115523636,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.3804741357703721,
+     "brier": 0.10832309679589154,
+     "ece": 0.039064311184839606,
+     "calibration_slope": 0.8261259374176932,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.03873163083103587,
+      "se": 0.009509705157739471,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "source_only": {
+     "log_loss": 0.32052112120149495,
+     "brier": 0.1026517226346618,
+     "ece": 0.014537615927491244,
+     "calibration_slope": 0.9950888632028432,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.021221383737841288,
+      "se": 0.011728649285050777,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 1
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.3417425049393363,
+     "brier": 0.10432207469719564,
+     "ece": 0.0232689292213053,
+     "calibration_slope": 0.8779319592707173
+    },
+    "pooled_indicator": {
+     "log_loss": 0.37378009684416824,
+     "brier": 0.10515186125598089,
+     "ece": 0.03189610922622237,
+     "calibration_slope": 0.9285880758738927,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.03203759190483195,
+      "se": 0.0496149921751938,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 12
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.4017150338873077,
+     "brier": 0.10958424006450714,
+     "ece": 0.04580621969318955,
+     "calibration_slope": 0.7069745887869281,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.059972528947971525,
+      "se": 0.01598997173529386,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3214596984658079,
+     "brier": 0.10280764069622779,
+     "ece": 0.016377806053436743,
+     "calibration_slope": 0.9795872296243211,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.020282806473528297,
+      "se": 0.011537336650880938,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 9
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.3205184952708453,
+     "brier": 0.10265089857490584,
+     "ece": 0.014534431329922718,
+     "calibration_slope": 0.9950496857526046,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.021224009668491008,
+      "se": 0.011727142076930593,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 5
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.32969784917178047,
+     "brier": 0.10406446211870264,
+     "ece": 0.02409563995331754,
+     "calibration_slope": 0.9477761570536805,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.012044655767555736,
+      "se": 0.00985003630853526,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.33530552543910747,
+     "brier": 0.10406747379651242,
+     "ece": 0.022674713826650813,
+     "calibration_slope": 0.8987318130207091,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.006436979500228766,
+      "se": 0.007616714068684574,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.3766766535478,
+     "brier": 0.11509362572144173,
+     "ece": 0.04740603572611117,
+     "calibration_slope": 1.0752553211082563,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.03493414860846378,
+      "se": 0.013421629473767413,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3203622720162923,
+     "brier": 0.10263548380509399,
+     "ece": 0.015016488863511526,
+     "calibration_slope": 0.998067779301819,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.02138023292304394,
+      "se": 0.011710077140690327,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    }
+   }
+  },
+  "shift=0,n=200": {
+   "chosen_lam_ours": [
+    1000.0,
+    1000.0,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    10.0,
+    Infinity,
+    10.0,
+    Infinity,
+    Infinity,
+    1000.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    100.0,
+    100.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3547286325506889,
+     "brier": 0.10707506045237727,
+     "ece": 0.024947548096622172,
+     "calibration_slope": 0.7987003141534279,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.028843090999216538,
+      "se": 0.003681671409181216,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.3395663676057795,
+     "brier": 0.10583425095380938,
+     "ece": 0.026816635943263407,
+     "calibration_slope": 0.9950989032519951,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.013680826054307088,
+      "se": 0.0019708456673351257,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3215699584685038,
+     "brier": 0.10306904842548348,
+     "ece": 0.013060496537672505,
+     "calibration_slope": 0.9991935930580279,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.004315583082968615,
+      "se": 0.0026818637491125563,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.3258855415514724,
+     "brier": 0.10356314809176334,
+     "ece": 0.015577837230313658,
+     "calibration_slope": 0.9760664588010854
+    },
+    "pooled_indicator": {
+     "log_loss": 0.32408313648538367,
+     "brier": 0.10350988058958768,
+     "ece": 0.020864894713033804,
+     "calibration_slope": 1.0727636120462385,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0018024050660887306,
+      "se": 0.002735167608634163,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.34326333841140055,
+     "brier": 0.10627953399433913,
+     "ece": 0.029471177476819876,
+     "calibration_slope": 0.9436588988222903,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.017377796859928206,
+      "se": 0.002498898602043822,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3236581861441893,
+     "brier": 0.1034527723075502,
+     "ece": 0.01615053953141898,
+     "calibration_slope": 1.010184577437642,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0022273554072831303,
+      "se": 0.002536593485544177,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.321573951641302,
+     "brier": 0.10306932240725039,
+     "ece": 0.012993629091319342,
+     "calibration_slope": 0.9996726425121116,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.004311589910170379,
+      "se": 0.002680673683746154,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.325980076425722,
+     "brier": 0.10370593441435168,
+     "ece": 0.01914035642307263,
+     "calibration_slope": 0.9989074063268852,
+     "paired_ours_minus_arm": {
+      "mean_diff": -9.453487424966175e-05,
+      "se": 0.0012751983388760157,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3261466235898819,
+     "brier": 0.10360891993801682,
+     "ece": 0.01654652684591174,
+     "calibration_slope": 0.9849820010652994,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0002610820384094728,
+      "se": 9.987660664113079e-05,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.3497080839686977,
+     "brier": 0.1109756172354374,
+     "ece": 0.035863493015739135,
+     "calibration_slope": 1.1732994636247005,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.023822542417225277,
+      "se": 0.004015444129335177,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3213615818985859,
+     "brier": 0.10303232533967015,
+     "ece": 0.013107224828939546,
+     "calibration_slope": 0.9988221759746541,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.004523959652886498,
+      "se": 0.0026724339146885065,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    }
+   }
+  },
+  "shift=0,n=400": {
+   "chosen_lam_ours": [
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    1000.0,
+    1000.0,
+    100.0,
+    Infinity,
+    100.0,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    100.0,
+    100.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3669354404272103,
+     "brier": 0.10777043932479011,
+     "ece": 0.02673503228074913,
+     "calibration_slope": 0.7633337940333103,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.04393664214433524,
+      "se": 0.004321500791101051,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.33307018590150106,
+     "brier": 0.10458877453931756,
+     "ece": 0.023427925852071613,
+     "calibration_slope": 0.8866096738959615,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.010071387618625947,
+      "se": 0.0010008414935289628,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3220544185170843,
+     "brier": 0.10297504134584246,
+     "ece": 0.013443198099157078,
+     "calibration_slope": 0.994516722169753,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0009443797657908171,
+      "se": 0.000370253859400161,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.3229987982828751,
+     "brier": 0.10315671975618967,
+     "ece": 0.015084200220540208,
+     "calibration_slope": 0.9717049706572303
+    },
+    "pooled_indicator": {
+     "log_loss": 0.32341314742787336,
+     "brier": 0.10318628176661908,
+     "ece": 0.017923082270627368,
+     "calibration_slope": 0.9441425527656693,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0004143491449982481,
+      "se": 0.0004200194882208772,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 12
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.33414637288880344,
+     "brier": 0.10475473244518332,
+     "ece": 0.024783457085545246,
+     "calibration_slope": 0.8794654441959213,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.011147574605928388,
+      "se": 0.001665940176278953,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3247929544234931,
+     "brier": 0.10344303765631084,
+     "ece": 0.01775171988286068,
+     "calibration_slope": 0.9480476927763611,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0017941561406179655,
+      "se": 0.0003965521540277586,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.322060081375673,
+     "brier": 0.10297593090418704,
+     "ece": 0.013409110997815183,
+     "calibration_slope": 0.9939412176540816,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.000938716907202101,
+      "se": 0.00036992374984219954,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 6
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.32439936457582774,
+     "brier": 0.10332340947236326,
+     "ece": 0.01822469067074641,
+     "calibration_slope": 0.9930969915105938,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0014005662929526472,
+      "se": 0.0002318119290045826,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.32312034932349654,
+     "brier": 0.10316622482764379,
+     "ece": 0.01535196859126683,
+     "calibration_slope": 0.9690542930875724,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.00012155104062147655,
+      "se": 4.588818701586421e-05,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.34036754577577594,
+     "brier": 0.10750725902987342,
+     "ece": 0.02256307712072012,
+     "calibration_slope": 0.9760264851862056,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.017368747492900797,
+      "se": 0.002181807875528684,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "oracle": {
+     "log_loss": 0.32195448113931374,
+     "brier": 0.10295720071230863,
+     "ece": 0.013286267213135947,
+     "calibration_slope": 0.9962946487456191,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0010443171435613608,
+      "se": 0.0003598176630615564,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    }
+   }
+  },
+  "shift=0,n=800": {
+   "chosen_lam_ours": [
+    Infinity,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    1000.0,
+    100.0,
+    Infinity,
+    10000.0,
+    Infinity,
+    1000.0,
+    10000.0,
+    Infinity,
+    100.0,
+    10000.0,
+    100.0,
+    1000.0,
+    1000.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3643427264310648,
+     "brier": 0.1082856631513546,
+     "ece": 0.02443547940982446,
+     "calibration_slope": 0.7688244998294477,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.04090161314710429,
+      "se": 0.0038873328689508794,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.3265476933409718,
+     "brier": 0.10435230444071297,
+     "ece": 0.01828081689764199,
+     "calibration_slope": 0.9767582756474784,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.003106580057011287,
+      "se": 0.0003505710120935113,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "source_only": {
+     "log_loss": 0.32299993766484314,
+     "brier": 0.10364477975547673,
+     "ece": 0.013570470823451553,
+     "calibration_slope": 0.991084943030487,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.00044117561911729994,
+      "se": 0.00018981620263394837,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 4
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.32344111328396047,
+     "brier": 0.1037718645341708,
+     "ece": 0.014816857673991893,
+     "calibration_slope": 0.9897823269237694
+    },
+    "pooled_indicator": {
+     "log_loss": 0.3233312591029671,
+     "brier": 0.10369900168674409,
+     "ece": 0.014743502663469863,
+     "calibration_slope": 1.0024502790108616,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.00010985418099330119,
+      "se": 0.00023050307254294717,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 10
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.32648904664101,
+     "brier": 0.10436698089077892,
+     "ece": 0.01861103934178465,
+     "calibration_slope": 0.9763917942399656,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.00304793335704957,
+      "se": 0.000407643878846546,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3245612432192734,
+     "brier": 0.1039942336108004,
+     "ece": 0.016454936811820357,
+     "calibration_slope": 0.9859858443015186,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0011201299353128615,
+      "se": 0.00026312895028046256,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.3229946797261705,
+     "brier": 0.10364519128306174,
+     "ece": 0.013548553446377487,
+     "calibration_slope": 0.9914104051084884,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0004464335577899437,
+      "se": 0.00019020141057989818,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 4
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.32582508671412264,
+     "brier": 0.10411071310478053,
+     "ece": 0.020297533318483232,
+     "calibration_slope": 1.0037203696802757,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0023839734301621457,
+      "se": 0.0002541449750014823,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.32347741398809293,
+     "brier": 0.10377619028519344,
+     "ece": 0.014920030367690258,
+     "calibration_slope": 0.9874479797954608,
+     "paired_ours_minus_arm": {
+      "mean_diff": -3.630070413244567e-05,
+      "se": 4.607169113628071e-05,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.3347423852043816,
+     "brier": 0.10655502754940831,
+     "ece": 0.021175243047489096,
+     "calibration_slope": 1.0409277947413045,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.011301271920421142,
+      "se": 0.0016076764550700883,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3227987886542826,
+     "brier": 0.10361387998130078,
+     "ece": 0.01357275057431343,
+     "calibration_slope": 0.9940022643099005,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.000642324629677844,
+      "se": 0.00020162231449901485,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 1
+     }
+    }
+   }
+  },
+  "shift=0.1,n=50": {
+   "chosen_lam_ours": [
+    10.0,
+    Infinity,
+    Infinity,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    10.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    100.0,
+    10.0,
+    Infinity,
+    Infinity,
+    10.0,
+    10.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3565843378838647,
+     "brier": 0.10648681446785449,
+     "ece": 0.02496301121091158,
+     "calibration_slope": 0.7962244920578059,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.030014194406253247,
+      "se": 0.005728824723388356,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.35515186732571974,
+     "brier": 0.10770475628652162,
+     "ece": 0.042740076882131696,
+     "calibration_slope": 0.9115349076118691,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.028581723848108274,
+      "se": 0.005292065639452887,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "source_only": {
+     "log_loss": 0.32157037616316114,
+     "brier": 0.10260231819541352,
+     "ece": 0.01445950863853776,
+     "calibration_slope": 1.0074015368846017,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.004999767314450331,
+      "se": 0.002282779771393854,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 1
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.3265701434776115,
+     "brier": 0.10363890367598745,
+     "ece": 0.02118950952358958,
+     "calibration_slope": 0.9444246563772583
+    },
+    "pooled_indicator": {
+     "log_loss": 0.32811030320310575,
+     "brier": 0.10342212590691238,
+     "ece": 0.02617756257644966,
+     "calibration_slope": 0.9496044798859428,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0015401597254943102,
+      "se": 0.002822776064077774,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.42472562253568835,
+     "brier": 0.11335969188502201,
+     "ece": 0.06052839412694464,
+     "calibration_slope": 0.6796381585765143,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0981554790580769,
+      "se": 0.023559423623825567,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3217056885990983,
+     "brier": 0.10265886342884131,
+     "ece": 0.015435292052350839,
+     "calibration_slope": 0.9980753106130935,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.004864454878513103,
+      "se": 0.002275888570348126,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 5
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.3215655729882298,
+     "brier": 0.10260151950115459,
+     "ece": 0.01435552311962462,
+     "calibration_slope": 1.007351041238322,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.005004570489381686,
+      "se": 0.0022831239364220026,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 5
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3260148508304128,
+     "brier": 0.1036442479641974,
+     "ece": 0.02277304593952074,
+     "calibration_slope": 0.9820424669791896,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0005552926471986935,
+      "se": 0.0008694403825611815,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3280457117678425,
+     "brier": 0.10375853168503531,
+     "ece": 0.022273078550016298,
+     "calibration_slope": 0.9333925112187048,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0014755682902310085,
+      "se": 0.0008363635467025423,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 13
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.38439095869267,
+     "brier": 0.12118752475665481,
+     "ece": 0.06346399298526637,
+     "calibration_slope": 1.2390727508501809,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.05782081521505859,
+      "se": 0.00734695984951779,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "oracle": {
+     "log_loss": 0.32024538956038534,
+     "brier": 0.1023814269096422,
+     "ece": 0.013528589597082257,
+     "calibration_slope": 1.0006220157419994,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.006324753917226056,
+      "se": 0.0023077715708961517,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    }
+   }
+  },
+  "shift=0.1,n=100": {
+   "chosen_lam_ours": [
+    Infinity,
+    10.0,
+    Infinity,
+    10.0,
+    Infinity,
+    1000.0,
+    Infinity,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    100.0,
+    100.0,
+    100.0,
+    1.0,
+    10.0,
+    10.0,
+    100.0,
+    Infinity,
+    10.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3562532697082173,
+     "brier": 0.10689019872933456,
+     "ece": 0.025968711439422067,
+     "calibration_slope": 0.7830400242717411,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.01945482374856832,
+      "se": 0.007020792193737789,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.3608935285670714,
+     "brier": 0.10771875918107413,
+     "ece": 0.03514586495953008,
+     "calibration_slope": 0.8943110126087251,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.024095082607422394,
+      "se": 0.00512090902577951,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3220191612020936,
+     "brier": 0.10302775906755757,
+     "ece": 0.015543538778624952,
+     "calibration_slope": 0.9803983775662524,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0147792847575553,
+      "se": 0.006808343575533986,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.336798445959649,
+     "brier": 0.10464540361991939,
+     "ece": 0.023481734225203724,
+     "calibration_slope": 0.896506417750234
+    },
+    "pooled_indicator": {
+     "log_loss": 0.32784997161198354,
+     "brier": 0.10390449020446799,
+     "ece": 0.02674560249752806,
+     "calibration_slope": 1.039540092483096,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.008948474347665434,
+      "se": 0.007273706068487605,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 10
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.39579419701881163,
+     "brier": 0.1119518659057193,
+     "ece": 0.05008142540268312,
+     "calibration_slope": 0.7270521580206042,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0589957510591627,
+      "se": 0.009947056011090463,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3231569700272125,
+     "brier": 0.10322660567476408,
+     "ece": 0.016581220239463144,
+     "calibration_slope": 0.9824191020193821,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.013641475932436456,
+      "se": 0.006841790620015806,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 6
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.32201283632593747,
+     "brier": 0.10302613831355416,
+     "ece": 0.015516810839114072,
+     "calibration_slope": 0.980618830663556,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.014785609633711474,
+      "se": 0.006809064829457301,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 7
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.33124729431410166,
+     "brier": 0.1048856211691662,
+     "ece": 0.024484809291679014,
+     "calibration_slope": 0.9660540356841878,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.005551151645547323,
+      "se": 0.00598308614424993,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 13
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3377903255299837,
+     "brier": 0.10474863513311927,
+     "ece": 0.02502752878996594,
+     "calibration_slope": 0.8778988762161241,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.000991879570334791,
+      "se": 0.00102120706319187,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.36511980470869687,
+     "brier": 0.11617720066532285,
+     "ece": 0.047937574628070606,
+     "calibration_slope": 1.2488255933904726,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.02832135874904787,
+      "se": 0.009601350488134154,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "oracle": {
+     "log_loss": 0.32024024010347973,
+     "brier": 0.10268276462221945,
+     "ece": 0.012907950308657967,
+     "calibration_slope": 1.003650573109208,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.016558205856169166,
+      "se": 0.0067824563266771325,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.1,n=200": {
+   "chosen_lam_ours": [
+    Infinity,
+    10.0,
+    Infinity,
+    Infinity,
+    100.0,
+    100.0,
+    Infinity,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    100.0,
+    Infinity,
+    100.0,
+    100.0,
+    Infinity,
+    100.0,
+    Infinity,
+    Infinity
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3567344047233216,
+     "brier": 0.10738605906204383,
+     "ece": 0.025025118698374677,
+     "calibration_slope": 0.8112049060689703,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.03317323759973496,
+      "se": 0.003857724993665009,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.33937849727048974,
+     "brier": 0.10523306252068795,
+     "ece": 0.025231859774081787,
+     "calibration_slope": 0.9120354881214479,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.015817330146903123,
+      "se": 0.004353281732484601,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "source_only": {
+     "log_loss": 0.32212393274759654,
+     "brier": 0.10310043068158584,
+     "ece": 0.0159806645609768,
+     "calibration_slope": 1.0165804489516315,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0014372343759900548,
+      "se": 0.0008381446361362359,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.3235611671235866,
+     "brier": 0.10328852080744248,
+     "ece": 0.01618574414272925,
+     "calibration_slope": 0.994970327375313
+    },
+    "pooled_indicator": {
+     "log_loss": 0.3238554002683437,
+     "brier": 0.10338793339680401,
+     "ece": 0.02015763162800214,
+     "calibration_slope": 0.9855547190737395,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0002942331447571236,
+      "se": 0.001222775558062366,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 13
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.3462302874063129,
+     "brier": 0.10596554376014067,
+     "ece": 0.028859775844736923,
+     "calibration_slope": 0.8627992572147862,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.02266912028272635,
+      "se": 0.005233976730853791,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.32352403788458234,
+     "brier": 0.10331189230570763,
+     "ece": 0.016815436978147257,
+     "calibration_slope": 0.9898099819265189,
+     "paired_ours_minus_arm": {
+      "mean_diff": 3.712923900428939e-05,
+      "se": 0.0007368549290501799,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 9
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.3221152215451346,
+     "brier": 0.10309817385428202,
+     "ece": 0.01603034396824751,
+     "calibration_slope": 1.016443018422928,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0014459455784520227,
+      "se": 0.0008366818801539772,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 6
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3243061395336965,
+     "brier": 0.10337197950317945,
+     "ece": 0.019309624979317118,
+     "calibration_slope": 1.0110557408733745,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0007449724101098982,
+      "se": 0.0008188930149892531,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.32523204326693606,
+     "brier": 0.10344343468309602,
+     "ece": 0.017451784603851345,
+     "calibration_slope": 0.9871694522260863,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0016708761433494243,
+      "se": 0.002224902873131508,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.3428907004298846,
+     "brier": 0.10886446010507582,
+     "ece": 0.026149603762577977,
+     "calibration_slope": 1.0812849072375266,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.019329533306298004,
+      "se": 0.0020613576984741112,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3205597175766575,
+     "brier": 0.10278369088239585,
+     "ece": 0.013062075419512726,
+     "calibration_slope": 0.9988080804563954,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.003001449546929055,
+      "se": 0.0008050318785302255,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 1
+     }
+    }
+   }
+  },
+  "shift=0.1,n=400": {
+   "chosen_lam_ours": [
+    Infinity,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    100.0,
+    Infinity,
+    100.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    10000.0,
+    1000.0,
+    100.0,
+    Infinity,
+    Infinity,
+    1000.0,
+    100.0,
+    100.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3601810390054116,
+     "brier": 0.10670795858548625,
+     "ece": 0.02683427938643269,
+     "calibration_slope": 0.7823506485541724,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.03916783265206823,
+      "se": 0.003473634635266311,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.3269368139400053,
+     "brier": 0.10346532078834976,
+     "ece": 0.02221153783818119,
+     "calibration_slope": 0.9621329993483878,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.00592360758666193,
+      "se": 0.0011006432338702403,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "source_only": {
+     "log_loss": 0.32056014753174283,
+     "brier": 0.10248188999000371,
+     "ece": 0.016271440179579672,
+     "calibration_slope": 1.0107444679982815,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.00045305882160049635,
+      "se": 0.00031440512580743703,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 3
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.3210132063533433,
+     "brier": 0.1025378915458705,
+     "ece": 0.016765675490017982,
+     "calibration_slope": 0.9917989192141914
+    },
+    "pooled_indicator": {
+     "log_loss": 0.32170407094427833,
+     "brier": 0.10263556507705567,
+     "ece": 0.019025701393947835,
+     "calibration_slope": 1.0069448499620675,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0006908645909350292,
+      "se": 0.00037238762199313653,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 12
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.3273464801611776,
+     "brier": 0.10361537595323893,
+     "ece": 0.02262723060458925,
+     "calibration_slope": 0.9508537830730397,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.006333273807834309,
+      "se": 0.0010686099830509066,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3213277999103771,
+     "brier": 0.10258124150983124,
+     "ece": 0.01707342757755511,
+     "calibration_slope": 0.9936549608840736,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.00031459355703373034,
+      "se": 0.0003691675177477714,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 8
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.32052322877364475,
+     "brier": 0.10247289732919043,
+     "ece": 0.016263414493514892,
+     "calibration_slope": 1.0108452995225483,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0004899775796985426,
+      "se": 0.00031068012684623705,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 3
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.32275957908758346,
+     "brier": 0.1026978839039355,
+     "ece": 0.01885384236496839,
+     "calibration_slope": 1.014626171320265,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0017463727342401252,
+      "se": 0.0002768609832868482,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3210884369876932,
+     "brier": 0.10255023489304922,
+     "ece": 0.016962588294304994,
+     "calibration_slope": 0.9966465545775371,
+     "paired_ours_minus_arm": {
+      "mean_diff": -7.52306343499066e-05,
+      "se": 7.947812115555477e-05,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.3355059318906149,
+     "brier": 0.1062505658681074,
+     "ece": 0.022902114154951185,
+     "calibration_slope": 1.0288376321853396,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.01449272553727154,
+      "se": 0.0019726609307061547,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3192333852705075,
+     "brier": 0.10217109262791506,
+     "ece": 0.01397504405566404,
+     "calibration_slope": 1.0006401498262467,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0017798210828358532,
+      "se": 0.000356968311383229,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    }
+   }
+  },
+  "shift=0.1,n=800": {
+   "chosen_lam_ours": [
+    100.0,
+    100.0,
+    Infinity,
+    100.0,
+    100.0,
+    Infinity,
+    100.0,
+    10000.0,
+    1000.0,
+    Infinity,
+    Infinity,
+    100.0,
+    100.0,
+    100.0,
+    1000.0,
+    Infinity,
+    100.0,
+    Infinity,
+    100.0,
+    Infinity
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.36785789214292314,
+     "brier": 0.10847225815720962,
+     "ece": 0.026483943831912722,
+     "calibration_slope": 0.7488282786919319,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.043803384145041965,
+      "se": 0.0038844589039238623,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.32685836640403304,
+     "brier": 0.1041542887221569,
+     "ece": 0.019462359551624227,
+     "calibration_slope": 0.9593065826363896,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0028038584061519153,
+      "se": 0.0006601951904845156,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "source_only": {
+     "log_loss": 0.32359146340914957,
+     "brier": 0.10357492936652364,
+     "ece": 0.015615612616821924,
+     "calibration_slope": 0.9683901077312214,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0004630445887316318,
+      "se": 0.00036457168867591475,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 6
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.32405450799788116,
+     "brier": 0.1036925495373187,
+     "ece": 0.017288020333561898,
+     "calibration_slope": 0.9572959990366284
+    },
+    "pooled_indicator": {
+     "log_loss": 0.3242757606128806,
+     "brier": 0.10367436348820436,
+     "ece": 0.018004247667633467,
+     "calibration_slope": 0.981291246272,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0002212526149994495,
+      "se": 0.0002437655099046341,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.32627201708045644,
+     "brier": 0.10408832285369016,
+     "ece": 0.019637289601204384,
+     "calibration_slope": 0.9596530361896992,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.002217509082575311,
+      "se": 0.0004929677717255007,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3241562007271671,
+     "brier": 0.10371484464521921,
+     "ece": 0.01735320669860426,
+     "calibration_slope": 0.9669014535752632,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.00010169272928598986,
+      "se": 0.00011393787617131518,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 5
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.3235192034493794,
+     "brier": 0.10356312254228817,
+     "ece": 0.015591118023694945,
+     "calibration_slope": 0.968905660482122,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.000535304548501729,
+      "se": 0.00035885449560527484,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 5
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3256893278751904,
+     "brier": 0.10399945776385247,
+     "ece": 0.021424339131286416,
+     "calibration_slope": 0.979113954403458,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0016348198773092986,
+      "se": 0.00022666983705565502,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3244859147384841,
+     "brier": 0.10376652619795539,
+     "ece": 0.017581682950857904,
+     "calibration_slope": 0.9523532484417532,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.00043140674060299273,
+      "se": 0.00034926157689833603,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.33469176092522857,
+     "brier": 0.10629247047105077,
+     "ece": 0.020117200523207597,
+     "calibration_slope": 0.9911777745943731,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.010637252927347457,
+      "se": 0.0012155141929594488,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "oracle": {
+     "log_loss": 0.32216060529092744,
+     "brier": 0.10332102975203997,
+     "ece": 0.014512060911108867,
+     "calibration_slope": 0.9941804759515283,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.001893902706953749,
+      "se": 0.0003227095983715691,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.3,n=50": {
+   "chosen_lam_ours": [
+    100.0,
+    Infinity,
+    1.0,
+    10.0,
+    10.0,
+    10000.0,
+    10.0,
+    10.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    1.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    10.0,
+    100.0,
+    1.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.37583705854314686,
+     "brier": 0.10936793679009862,
+     "ece": 0.03315109429394003,
+     "calibration_slope": 0.7504021768078147,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.012849850989708325,
+      "se": 0.027381166048294332,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.49031925174937285,
+     "brier": 0.11398046430670514,
+     "ece": 0.05858561081058108,
+     "calibration_slope": 0.7717668348445684,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.10163234221651765,
+      "se": 0.035759762176094556,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "source_only": {
+     "log_loss": 0.33545006070753297,
+     "brier": 0.10542316656230714,
+     "ece": 0.023393354999648536,
+     "calibration_slope": 0.965396419755735,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.053236848825322224,
+      "se": 0.027403792378831546,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.3886869095328552,
+     "brier": 0.10852710732655924,
+     "ece": 0.0377569851976536,
+     "calibration_slope": 0.8021989368242585
+    },
+    "pooled_indicator": {
+     "log_loss": 0.5322255251801911,
+     "brier": 0.11242725902387848,
+     "ece": 0.05383002372398356,
+     "calibration_slope": 0.8359987796581578,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.14353861564733594,
+      "se": 0.11541807376290769,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.49680692605882115,
+     "brier": 0.11682488260663915,
+     "ece": 0.06676827856107583,
+     "calibration_slope": 0.5559657661852244,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.10812001652596603,
+      "se": 0.024149883499516512,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3334012229797025,
+     "brier": 0.10505817263030855,
+     "ece": 0.02181617700443226,
+     "calibration_slope": 0.9605213842032532,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.05528568655315273,
+      "se": 0.027487723716326167,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 1
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.33540377322492937,
+     "brier": 0.10541595360922477,
+     "ece": 0.023400148243706655,
+     "calibration_slope": 0.9655028098386043,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.053283136307925846,
+      "se": 0.027405511114290987,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 1
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3590203284122973,
+     "brier": 0.10830225499345505,
+     "ece": 0.0358622295083165,
+     "calibration_slope": 0.8751423741240707,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.029666581120557967,
+      "se": 0.014140696536493936,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.40449352102820424,
+     "brier": 0.10913209182910825,
+     "ece": 0.04048331047093751,
+     "calibration_slope": 0.7858243264265237,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.015806611495348975,
+      "se": 0.01046109984967827,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.42151116662278054,
+     "brier": 0.12985335858400152,
+     "ece": 0.06673768326029428,
+     "calibration_slope": 1.2278199854661005,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.03282425708992541,
+      "se": 0.028415280613772437,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "oracle": {
+     "log_loss": 0.32131803866345876,
+     "brier": 0.10309246952348965,
+     "ece": 0.013874774058837705,
+     "calibration_slope": 0.9939502434415332,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.06736887086939644,
+      "se": 0.027102452898194598,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.3,n=100": {
+   "chosen_lam_ours": [
+    Infinity,
+    10.0,
+    Infinity,
+    Infinity,
+    100.0,
+    10.0,
+    Infinity,
+    Infinity,
+    Infinity,
+    Infinity,
+    100.0,
+    Infinity,
+    100.0,
+    Infinity,
+    10.0,
+    10.0,
+    100.0,
+    Infinity,
+    Infinity,
+    10.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.38800387681340925,
+     "brier": 0.10998177039307178,
+     "ece": 0.0374781235799798,
+     "calibration_slope": 0.7031551951531795,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.051738253901888465,
+      "se": 0.007655694727721161,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.36697185574783536,
+     "brier": 0.11025310057476838,
+     "ece": 0.04389157953804422,
+     "calibration_slope": 0.9181937266619176,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.030706232836314584,
+      "se": 0.00453230093886665,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3357547976295606,
+     "brier": 0.10533918938846902,
+     "ece": 0.025887922289208266,
+     "calibration_slope": 0.9333470559298401,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0005108252819601507,
+      "se": 0.0014184555091833505,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 5
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.33626562291152073,
+     "brier": 0.10527138000651655,
+     "ece": 0.02727264154939247,
+     "calibration_slope": 0.9076502777428826
+    },
+    "pooled_indicator": {
+     "log_loss": 0.34085899591061686,
+     "brier": 0.10619776631733928,
+     "ece": 0.03328325205558371,
+     "calibration_slope": 1.0411768955676997,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0045933729990960985,
+      "se": 0.0025716463411882182,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 13
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.3680217983243779,
+     "brier": 0.1094224630037379,
+     "ece": 0.042370052508015496,
+     "calibration_slope": 0.8240383310741786,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.031756175412857066,
+      "se": 0.007572546838119927,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.33196256404668856,
+     "brier": 0.10477470098565253,
+     "ece": 0.023569633347957523,
+     "calibration_slope": 0.9564296545087922,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0043030588648322625,
+      "se": 0.0015154364109715294,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 2
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.33565413524280713,
+     "brier": 0.10532564286576254,
+     "ece": 0.025816559919089266,
+     "calibration_slope": 0.9339693849721385,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0006114876687136915,
+      "se": 0.001417867144557128,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 7
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3339110706767883,
+     "brier": 0.10533165315512805,
+     "ece": 0.02618140396821713,
+     "calibration_slope": 0.9465542001186964,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0023545522347325114,
+      "se": 0.0009317529662549174,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 4
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3373090084372635,
+     "brier": 0.10536297710609976,
+     "ece": 0.027575428517541283,
+     "calibration_slope": 0.9026544434882393,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0010433855257427145,
+      "se": 0.0005476734871456643,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 12
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.3809611761159063,
+     "brier": 0.11994464250731267,
+     "ece": 0.062136266099704865,
+     "calibration_slope": 1.3556012864919347,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.04469555320438548,
+      "se": 0.00789617963421068,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3216537324224508,
+     "brier": 0.10290477192469534,
+     "ece": 0.013524868997669082,
+     "calibration_slope": 0.9951885837602388,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.014611890489069978,
+      "se": 0.0015786360369978453,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.3,n=200": {
+   "chosen_lam_ours": [
+    100.0,
+    100.0,
+    Infinity,
+    1000.0,
+    1000.0,
+    100.0,
+    10.0,
+    100.0,
+    100.0,
+    Infinity,
+    1000.0,
+    100.0,
+    100.0,
+    100.0,
+    10.0,
+    100.0,
+    Infinity,
+    100.0,
+    1000.0,
+    10.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3723762114951451,
+     "brier": 0.10855829144313642,
+     "ece": 0.037199454120599336,
+     "calibration_slope": 0.7677609509670454,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.04247272303986109,
+      "se": 0.003835290110890251,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.34507036608293007,
+     "brier": 0.10598425211217788,
+     "ece": 0.03343457103476898,
+     "calibration_slope": 0.8506975012207623,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.01516687762764595,
+      "se": 0.003231270054620965,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3318226083800053,
+     "brier": 0.10455853021641734,
+     "ece": 0.028753702722989338,
+     "calibration_slope": 1.0063652523749076,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.001919119924721297,
+      "se": 0.001193399823876644,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 12
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.32990348845528406,
+     "brier": 0.10424489773352737,
+     "ece": 0.028289229244035468,
+     "calibration_slope": 0.9787929274197991
+    },
+    "pooled_indicator": {
+     "log_loss": 0.33183430632562394,
+     "brier": 0.10435067372777647,
+     "ece": 0.027869127356756236,
+     "calibration_slope": 0.9613822154853722,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0019308178703398484,
+      "se": 0.0015250141375367599,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.3420280475592251,
+     "brier": 0.10524225065093826,
+     "ece": 0.031730159927957226,
+     "calibration_slope": 0.8310588521480206,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.012124559103941088,
+      "se": 0.0038377179270963967,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3264156557538788,
+     "brier": 0.10344944558290707,
+     "ece": 0.023734703977412307,
+     "calibration_slope": 0.9837450450826349,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.003487832701405164,
+      "se": 0.0013210552265225692,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 1
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.33167300077753337,
+     "brier": 0.10453006826608564,
+     "ece": 0.028736090120603835,
+     "calibration_slope": 1.0065100386277295,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0017695123222493565,
+      "se": 0.0011930669136567809,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 12
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.32986518735057274,
+     "brier": 0.1043558050231788,
+     "ece": 0.02696633237735498,
+     "calibration_slope": 1.0057333551213337,
+     "paired_ours_minus_arm": {
+      "mean_diff": 3.830110471129867e-05,
+      "se": 0.0010174986642003964,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 10
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3314432842899849,
+     "brier": 0.10440421903070089,
+     "ece": 0.028693985396791626,
+     "calibration_slope": 0.9714136126699724,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0015397958347007378,
+      "se": 0.0012265836900348234,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.35262204607835984,
+     "brier": 0.11133494300181242,
+     "ece": 0.039031894928759116,
+     "calibration_slope": 1.148551208523528,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.022718557623075793,
+      "se": 0.004921592057800755,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "oracle": {
+     "log_loss": 0.31866229679798336,
+     "brier": 0.10199860437509871,
+     "ece": 0.014109114514181028,
+     "calibration_slope": 1.0012840831304501,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.011241191657300633,
+      "se": 0.0013485211538224221,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.3,n=400": {
+   "chosen_lam_ours": [
+    100.0,
+    100.0,
+    10.0,
+    10.0,
+    1000.0,
+    100.0,
+    100.0,
+    10.0,
+    10.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    10.0,
+    100.0,
+    100.0,
+    100.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3729538736797889,
+     "brier": 0.10917993101181242,
+     "ece": 0.03816168196316791,
+     "calibration_slope": 0.7264291391398698,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.045419638479087115,
+      "se": 0.006982134672912616,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.3289666511759211,
+     "brier": 0.10412772044233617,
+     "ece": 0.019135557413283256,
+     "calibration_slope": 0.9423227931824976,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0014324159752193912,
+      "se": 0.000994320141866956,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3364101558786546,
+     "brier": 0.10569036752223493,
+     "ece": 0.030011487324073327,
+     "calibration_slope": 0.9116689780143565,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.008875920677952813,
+      "se": 0.001056659649098758,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.32753423520070174,
+     "brier": 0.10396391390904354,
+     "ece": 0.021044301857424272,
+     "calibration_slope": 0.9571776816161746
+    },
+    "pooled_indicator": {
+     "log_loss": 0.33415481288798177,
+     "brier": 0.10561025173627817,
+     "ece": 0.029036531178834195,
+     "calibration_slope": 1.017287925273121,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.006620577687279969,
+      "se": 0.0012412330509929397,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.33070119358706274,
+     "brier": 0.10430782053200201,
+     "ece": 0.01985914186045218,
+     "calibration_slope": 0.9324532387652857,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0031669583863610045,
+      "se": 0.0012427600376591099,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3262692036241731,
+     "brier": 0.10377427550676802,
+     "ece": 0.019931434718458905,
+     "calibration_slope": 0.9557044601016047,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0012650315765285619,
+      "se": 0.0005739649197680342,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 1
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.33597932089685345,
+     "brier": 0.10561847224805046,
+     "ece": 0.029668845633485114,
+     "calibration_slope": 0.9138319653482316,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.008445085696151742,
+      "se": 0.0010319375004449033,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3287626039726096,
+     "brier": 0.10438886170009443,
+     "ece": 0.022414579670469538,
+     "calibration_slope": 0.9806609350415328,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0012283687719077876,
+      "se": 0.000773299353986394,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.327786641292751,
+     "brier": 0.10401261700394657,
+     "ece": 0.020997099033672813,
+     "calibration_slope": 0.9633499213597071,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0002524060920492689,
+      "se": 0.00015160893843010445,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.3366872631039173,
+     "brier": 0.1066788030839014,
+     "ece": 0.02004833126987206,
+     "calibration_slope": 1.0372781349565443,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.009153027903215618,
+      "se": 0.0023793569081515874,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "oracle": {
+     "log_loss": 0.32051167338951686,
+     "brier": 0.10281012998808983,
+     "ece": 0.013952037168800521,
+     "calibration_slope": 0.9961289247236682,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.007022561811184882,
+      "se": 0.001236609686409383,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.3,n=800": {
+   "chosen_lam_ours": [
+    100.0,
+    Infinity,
+    10.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    10.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    10.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3663706605368986,
+     "brier": 0.1077306376091182,
+     "ece": 0.034877983751305894,
+     "calibration_slope": 0.814097835261928,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.044748798823626354,
+      "se": 0.007047154964749635,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.32286262957833917,
+     "brier": 0.10261242436389799,
+     "ece": 0.019305730667303067,
+     "calibration_slope": 0.9637960960939399,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0012407678650669571,
+      "se": 0.0005175272794102946,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "source_only": {
+     "log_loss": 0.33070779501310055,
+     "brier": 0.10399165992209822,
+     "ece": 0.025540436191659844,
+     "calibration_slope": 1.034643097466161,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.009085933299828371,
+      "se": 0.0009544990429373069,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.32162186171327223,
+     "brier": 0.10241040643717025,
+     "ece": 0.018378888159331086,
+     "calibration_slope": 1.0008093592853178
+    },
+    "pooled_indicator": {
+     "log_loss": 0.3293660998328816,
+     "brier": 0.10371971987054807,
+     "ece": 0.02346492005249936,
+     "calibration_slope": 1.0061905224668657,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.007744238119609411,
+      "se": 0.0009036593814962783,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.3219883938655065,
+     "brier": 0.10250743658952095,
+     "ece": 0.019216081104286777,
+     "calibration_slope": 0.9690302132304354,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.00036653215223426814,
+      "se": 0.0005849901993184609,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 13
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3209690600048856,
+     "brier": 0.1023093609902688,
+     "ece": 0.01825507598059984,
+     "calibration_slope": 1.0044988980950482,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0006528017083866123,
+      "se": 0.00037852799647025275,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.33009792946605926,
+     "brier": 0.1038898936172686,
+     "ece": 0.025134494023022636,
+     "calibration_slope": 1.0359478898245613,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.008476067752787069,
+      "se": 0.0009090905165977379,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3229357633960696,
+     "brier": 0.10259896323237323,
+     "ece": 0.020532149759750602,
+     "calibration_slope": 1.0211017330657015,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0013139016827973808,
+      "se": 0.0003033743935370954,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.32171384865774855,
+     "brier": 0.10242382044947988,
+     "ece": 0.01858588385022995,
+     "calibration_slope": 1.0009857685282164,
+     "paired_ours_minus_arm": {
+      "mean_diff": -9.198694447633412e-05,
+      "se": 6.468944189825656e-05,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 13
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.3327037350906919,
+     "brier": 0.10503453744393243,
+     "ece": 0.02037301447269424,
+     "calibration_slope": 1.0101417753967092,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.011081873377419685,
+      "se": 0.002334117818597706,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3178219266196406,
+     "brier": 0.10171328876587911,
+     "ece": 0.013690668622623714,
+     "calibration_slope": 1.013336146990913,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0037999350936316427,
+      "se": 0.000626077806615946,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.6,n=50": {
+   "chosen_lam_ours": [
+    10.0,
+    Infinity,
+    Infinity,
+    10.0,
+    Infinity,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10000.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    1.0,
+    Infinity,
+    Infinity,
+    100.0,
+    Infinity,
+    10.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.4173226615422722,
+     "brier": 0.11272773346353623,
+     "ece": 0.05624526625193853,
+     "calibration_slope": 0.7103678812100663,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.044050230198528606,
+      "se": 0.016674635894766497,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.3991413601478695,
+     "brier": 0.1111453187346789,
+     "ece": 0.04812862067066446,
+     "calibration_slope": 0.7703560701995243,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.02586892880412591,
+      "se": 0.010232686273634791,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3770006377615066,
+     "brier": 0.11030501586315196,
+     "ece": 0.054777518227362466,
+     "calibration_slope": 0.9013467733926559,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0037282064177630928,
+      "se": 0.010854040638053439,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 10
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.37327243134374355,
+     "brier": 0.10797074378776221,
+     "ece": 0.041500570092816554,
+     "calibration_slope": 0.819462287301522
+    },
+    "pooled_indicator": {
+     "log_loss": 0.5334372871253293,
+     "brier": 0.11392471841471548,
+     "ece": 0.0628337975624372,
+     "calibration_slope": 0.8445967583914642,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.16016485578158574,
+      "se": 0.10399730425416819,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.4657465340163026,
+     "brier": 0.1154276058065122,
+     "ece": 0.06192353001967828,
+     "calibration_slope": 0.5918686116745817,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.09247410267255912,
+      "se": 0.022452920446769793,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3665916397794401,
+     "brier": 0.10889378921108048,
+     "ece": 0.04855470985128645,
+     "calibration_slope": 0.9144376469639311,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.006680791564303403,
+      "se": 0.009728786396956023,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 10
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.37678947680356545,
+     "brier": 0.11028234716572116,
+     "ece": 0.054726526012116715,
+     "calibration_slope": 0.901750573671829,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.003517045459821827,
+      "se": 0.010818340074822167,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3586331785051538,
+     "brier": 0.10857266868667739,
+     "ece": 0.04038120132430922,
+     "calibration_slope": 0.9101967329710252,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.014639252838589781,
+      "se": 0.006908950216353649,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 3
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3748975353967664,
+     "brier": 0.1083084433564027,
+     "ece": 0.043484047336449914,
+     "calibration_slope": 0.8359836378671641,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0016251040530228533,
+      "se": 0.0026066520052043106,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 10
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.41727821404252624,
+     "brier": 0.12988984666126832,
+     "ece": 0.07778932291025994,
+     "calibration_slope": 1.4879305822601911,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.044005782698782706,
+      "se": 0.02091452559699968,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3179539029134937,
+     "brier": 0.10160090876705948,
+     "ece": 0.014183956193932585,
+     "calibration_slope": 1.0027654679481348,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.05531852843024988,
+      "se": 0.01004671662449188,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.6,n=100": {
+   "chosen_lam_ours": [
+    Infinity,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    1.0,
+    1.0,
+    10.0,
+    10.0,
+    10.0,
+    Infinity,
+    1000.0,
+    10.0,
+    10.0,
+    Infinity,
+    10.0,
+    100.0,
+    10.0,
+    10.0,
+    10.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.42909298113055183,
+     "brier": 0.11515134286614177,
+     "ece": 0.06041494583268307,
+     "calibration_slope": 0.608943515149182,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.06422541983061948,
+      "se": 0.011875468912094692,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.37521103907185305,
+     "brier": 0.10987524923534316,
+     "ece": 0.04423471299436859,
+     "calibration_slope": 0.845386105496627,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.010343477771920805,
+      "se": 0.007947442916392747,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 13
+     }
+    },
+    "source_only": {
+     "log_loss": 0.38492398973255015,
+     "brier": 0.11232711934386008,
+     "ece": 0.055451459184736526,
+     "calibration_slope": 0.7699068441626353,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.020056428432617887,
+      "se": 0.010248334864074634,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.36486756129993225,
+     "brier": 0.10854057750033237,
+     "ece": 0.03868877635506548,
+     "calibration_slope": 0.839936512655363
+    },
+    "pooled_indicator": {
+     "log_loss": 0.42729171954285616,
+     "brier": 0.11602309073535284,
+     "ece": 0.06725244370383394,
+     "calibration_slope": 1.094539004470073,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0624241582429239,
+      "se": 0.053529638215668786,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.38661649482412563,
+     "brier": 0.11040939869048486,
+     "ece": 0.043926583604866565,
+     "calibration_slope": 0.745452009351935,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.021748933524193298,
+      "se": 0.013989771075707732,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 12
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.35942776033283586,
+     "brier": 0.10863730621866567,
+     "ece": 0.04326992357849198,
+     "calibration_slope": 0.860477049465832,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.005439800967096451,
+      "se": 0.010584637098974597,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.3843650622546704,
+     "brier": 0.11226234312169439,
+     "ece": 0.055240809177335995,
+     "calibration_slope": 0.7717938944237521,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.01949750095473809,
+      "se": 0.010276173575519453,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.3489807435387834,
+     "brier": 0.10782876565542825,
+     "ece": 0.03533034221740501,
+     "calibration_slope": 0.9132948514571005,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.015886817761148808,
+      "se": 0.00546347011355389,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 6
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.36692718733369295,
+     "brier": 0.10860110172814053,
+     "ece": 0.03830447559941762,
+     "calibration_slope": 0.8331748239229386,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0020596260337606706,
+      "se": 0.002027199098800293,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.38314042291590045,
+     "brier": 0.12006852278767992,
+     "ece": 0.06002391309383533,
+     "calibration_slope": 1.3032844700761979,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.018272861615968135,
+      "se": 0.01244036126739362,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "oracle": {
+     "log_loss": 0.31873319251918114,
+     "brier": 0.10218582241541307,
+     "ece": 0.014759687818392375,
+     "calibration_slope": 0.99617193853822,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.046134368780751125,
+      "se": 0.010693035665874038,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.6,n=200": {
+   "chosen_lam_ours": [
+    10.0,
+    100.0,
+    100.0,
+    10.0,
+    1.0,
+    10.0,
+    100.0,
+    100.0,
+    10.0,
+    Infinity,
+    10.0,
+    Infinity,
+    0.0,
+    10.0,
+    10.0,
+    100.0,
+    10.0,
+    100.0,
+    10.0,
+    10.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.42163700716398955,
+     "brier": 0.11510401637245768,
+     "ece": 0.05629814089131465,
+     "calibration_slope": 0.6673936046470006,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.07527534556521208,
+      "se": 0.013220726332086733,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 16
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.34851303778065185,
+     "brier": 0.10759119280185594,
+     "ece": 0.03501922836304553,
+     "calibration_slope": 0.926158165149843,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0021513761818743767,
+      "se": 0.007300160693446264,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 13
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3798069058150698,
+     "brier": 0.11233979149715012,
+     "ece": 0.05115567954637562,
+     "calibration_slope": 0.8544076411874817,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.03344524421629232,
+      "se": 0.004632192997586004,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.34636166159877746,
+     "brier": 0.10719308885127747,
+     "ece": 0.0346563606005284,
+     "calibration_slope": 0.9138417777292609
+    },
+    "pooled_indicator": {
+     "log_loss": 0.36949143280517127,
+     "brier": 0.1126326115397555,
+     "ece": 0.05256718789571391,
+     "calibration_slope": 1.0597977583625908,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.023129771206393788,
+      "se": 0.004151513498898355,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.34235581384594005,
+     "brier": 0.10678069124244746,
+     "ece": 0.03307001482572554,
+     "calibration_slope": 0.9079422963530123,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.004005847752837371,
+      "se": 0.0033852665435761147,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3494959300873789,
+     "brier": 0.10777317556135128,
+     "ece": 0.03593197433316046,
+     "calibration_slope": 0.9451973409795091,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.003134268488601465,
+      "se": 0.002121140231687869,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 8
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.37883056592183495,
+     "brier": 0.11222742591511103,
+     "ece": 0.05076875392595801,
+     "calibration_slope": 0.8575363741675804,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.03246890432305745,
+      "se": 0.0044575215956540555,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 18
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.34121143565029605,
+     "brier": 0.10718453229525311,
+     "ece": 0.03311018822939079,
+     "calibration_slope": 0.9806278460723835,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.005150225948481408,
+      "se": 0.0017135538565198067,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 5
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3463522568451353,
+     "brier": 0.10721967426231342,
+     "ece": 0.034809820286020095,
+     "calibration_slope": 0.9174517605717767,
+     "paired_ours_minus_arm": {
+      "mean_diff": 9.404753642200428e-06,
+      "se": 0.0002487452106103147,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 10
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.36891997672411936,
+     "brier": 0.1149290809451485,
+     "ece": 0.041011084237920804,
+     "calibration_slope": 1.1129560239125624,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0225583151253418,
+      "se": 0.008461018040722041,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 15
+     }
+    },
+    "oracle": {
+     "log_loss": 0.32126402309823765,
+     "brier": 0.10317953266645945,
+     "ece": 0.014433381135101758,
+     "calibration_slope": 0.9929176906101256,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.025097638500539792,
+      "se": 0.004040654899620028,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.6,n=400": {
+   "chosen_lam_ours": [
+    10.0,
+    100.0,
+    10.0,
+    100.0,
+    10.0,
+    100.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    100.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    100.0,
+    1.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.39974747629602325,
+     "brier": 0.1131918728534416,
+     "ece": 0.05436091453855524,
+     "calibration_slope": 0.741986352845013,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.07048686974064425,
+      "se": 0.008242693369595842,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.32875597794832256,
+     "brier": 0.10420073270854402,
+     "ece": 0.02514793656269443,
+     "calibration_slope": 0.939760638496425,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0005046286070564006,
+      "se": 0.0013194271320059682,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 13
+     }
+    },
+    "source_only": {
+     "log_loss": 0.37502034196342426,
+     "brier": 0.11175194935507678,
+     "ece": 0.05126257475201742,
+     "calibration_slope": 0.8919434640634254,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.04575973540804528,
+      "se": 0.002948331013423555,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.3292606065553789,
+     "brier": 0.10428878592714534,
+     "ece": 0.02378759498154828,
+     "calibration_slope": 0.9641079534912823
+    },
+    "pooled_indicator": {
+     "log_loss": 0.3652124185340261,
+     "brier": 0.11176950860789896,
+     "ece": 0.05091133381412018,
+     "calibration_slope": 1.0295522816257006,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.03595181197864707,
+      "se": 0.002575990575333201,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.3284290199769761,
+     "brier": 0.10400813839590842,
+     "ece": 0.023775508103324024,
+     "calibration_slope": 0.9283859789199747,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.0008315865784028719,
+      "se": 0.0011403969636519062,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3350599555844018,
+     "brier": 0.10522488557509642,
+     "ece": 0.027375817558662564,
+     "calibration_slope": 0.9839594857594459,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.005799349029022866,
+      "se": 0.0010434501197994668,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.37355573492844896,
+     "brier": 0.11155789750124849,
+     "ece": 0.05075094323031828,
+     "calibration_slope": 0.8971096556899815,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.04429512837306994,
+      "se": 0.0028044345504823747,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.32928348676469377,
+     "brier": 0.10450354315227277,
+     "ece": 0.025216206469697095,
+     "calibration_slope": 0.9910029218855403,
+     "paired_ours_minus_arm": {
+      "mean_diff": -2.2880209314837874e-05,
+      "se": 0.0005171845539891672,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 11
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.3291917154841008,
+     "brier": 0.10427513678504799,
+     "ece": 0.02375016380031557,
+     "calibration_slope": 0.9640028731039877,
+     "paired_ours_minus_arm": {
+      "mean_diff": 6.889107127805761e-05,
+      "se": 8.997081379532679e-05,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 9
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.3464990258858325,
+     "brier": 0.10882847408585698,
+     "ece": 0.02655868201493549,
+     "calibration_slope": 1.0471778927217845,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.017238419330453513,
+      "se": 0.004923488771059604,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 17
+     }
+    },
+    "oracle": {
+     "log_loss": 0.31947194276068597,
+     "brier": 0.10245575059250633,
+     "ece": 0.014658733947078294,
+     "calibration_slope": 0.9983513368490484,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.009788663794693012,
+      "se": 0.0020293403102013274,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  },
+  "shift=0.6,n=800": {
+   "chosen_lam_ours": [
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    1.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    1.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0
+   ],
+   "arms": {
+    "closed_form": {
+     "log_loss": 0.3984034705392641,
+     "brier": 0.1134586948117996,
+     "ece": 0.05799701925967869,
+     "calibration_slope": 0.7857192530921124,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.07627801400877478,
+      "se": 0.007837854409778102,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "target_only_cv": {
+     "log_loss": 0.32234557822461546,
+     "brier": 0.10262271151375632,
+     "ece": 0.019661097615831423,
+     "calibration_slope": 0.992642266110343,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.00022012169412615536,
+      "se": 0.000185130394801838,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 14
+     }
+    },
+    "source_only": {
+     "log_loss": 0.3710029427901308,
+     "brier": 0.11071799816501286,
+     "ece": 0.053327012284636065,
+     "calibration_slope": 1.007825412331322,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0488774862596415,
+      "se": 0.0027558436670119518,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "ours_centred_cv": {
+     "log_loss": 0.3221254565304893,
+     "brier": 0.10257105749748086,
+     "ece": 0.01946312000712972,
+     "calibration_slope": 0.9977174292139617
+    },
+    "pooled_indicator": {
+     "log_loss": 0.3567175297821742,
+     "brier": 0.10982784788969388,
+     "ece": 0.04731592089606246,
+     "calibration_slope": 1.0787677289480768,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.034592073251684896,
+      "se": 0.002805073134338467,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "abl_ours_lam1": {
+     "log_loss": 0.3223487022063848,
+     "brier": 0.10262520433222125,
+     "ece": 0.020021895002153317,
+     "calibration_slope": 0.991636212345116,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.00022324567589544737,
+      "se": 0.00012305470131351973,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 10
+     }
+    },
+    "abl_ours_lam100": {
+     "log_loss": 0.3250422568430033,
+     "brier": 0.10301412986377752,
+     "ece": 0.022034697268815927,
+     "calibration_slope": 1.0427546033242652,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0029168003125140374,
+      "se": 0.0006422898695486682,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_lam10000": {
+     "log_loss": 0.3680902227745947,
+     "brier": 0.11032730511309388,
+     "ece": 0.052168291062544926,
+     "calibration_slope": 1.016218990812256,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.04596476624410539,
+      "se": 0.002449094341289803,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "abl_ours_t4_link": {
+     "log_loss": 0.32390719830079845,
+     "brier": 0.10277154238785662,
+     "ece": 0.02103212420794976,
+     "calibration_slope": 1.0230712382349352,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.0017817417703091837,
+      "se": 0.0003065855461150353,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 19
+     }
+    },
+    "abl_ours_target_standardisation": {
+     "log_loss": 0.32211814760643337,
+     "brier": 0.10257052666297399,
+     "ece": 0.01946755310973351,
+     "calibration_slope": 0.9980108060197315,
+     "paired_ours_minus_arm": {
+      "mean_diff": 7.308924055928639e-06,
+      "se": 5.1163903333903156e-06,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 9
+     }
+    },
+    "logreg_target_only": {
+     "log_loss": 0.343262882787111,
+     "brier": 0.10771222088169638,
+     "ece": 0.028301674159746958,
+     "calibration_slope": 1.0414322712153603,
+     "paired_ours_minus_arm": {
+      "mean_diff": -0.021137426256621645,
+      "se": 0.0037287042233909336,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 20
+     }
+    },
+    "oracle": {
+     "log_loss": 0.3180188838706163,
+     "brier": 0.10178338176008395,
+     "ece": 0.014172641648298729,
+     "calibration_slope": 1.006359071623099,
+     "paired_ours_minus_arm": {
+      "mean_diff": 0.004106572659873077,
+      "se": 0.000856048969935205,
+      "n_draws": 20,
+      "n_test_rows_per_draw": 5000,
+      "draw_wins": 0
+     }
+    }
+   }
+  }
+ },
+ "wall_seconds": 2628.390515089035
+}
