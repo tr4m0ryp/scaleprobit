@@ -38,6 +38,9 @@
 \begin{document}
 
 \maketitle
+\vspace{-1.5em}
+\begin{center}\small Technical note (preprint, not peer-reviewed)\end{center}
+\vspace{0.5em}
 
 \begin{abstract}
 A heteroscedastic probit, a probit whose noise scale depends on features, estimates its scale coefficients poorly from a few hundred target rows.
@@ -228,6 +231,11 @@ We do not claim the method beats source-only or pooling, nor that it generalises
 
 After the main run we tried \nVariantsTried{} post-hoc variants of the $\lambda$ selection (a \nDenseGrid-point grid, slopes pulled harder, the one-SE rule, repeated CV; Appendix~\ref{app:variants}); none was kept, and the one-SE rule is source-only by another name.
 The \nAblations{} ablations in Table~\ref{tab:ablation} were pre-registered; its free-intercept row is post-hoc.
+
+\section*{Generative AI acknowledgement}
+Generative AI is becoming part of how research is designed, carried out and written up. Readers should know where it was used, so we state it plainly. Generative AI was used throughout this project: to write and review code, to run and check the experiments, and to draft and revise this note. We used only Anthropic's Claude models. Every result reported here comes from code in the accompanying repository and can be reproduced from it.
+
+Statements like this one are still free text, and no two papers word them alike. We are developing a general checklist for reporting generative AI use, in the spirit of the CRediT taxonomy~\citep{brand2015}, which lists each author's contribution through a fixed set of roles. It will cover the ways AI enters a project, from coding assistance and brainstorming to fully autonomous execution, so that researchers can state their use in a short, comparable form. Once published, the checklist will be added to this section.
 
 \bibliographystyle{plainnat}
 \bibliography{refs}

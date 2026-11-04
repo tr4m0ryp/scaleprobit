@@ -4,7 +4,7 @@
   <a href="https://x.com/tr4m0ryp"><img alt="Follow on X" src="https://img.shields.io/badge/X-@tr4m0ryp-000000?logo=x&logoColor=white"></a>
 </p>
 <p align="center">
-  <a href="paper/scaleprobit.pdf"><img alt="Paper PDF" src="https://img.shields.io/badge/Paper-PDF-b31b1b?logo=adobeacrobatreader&logoColor=white"></a>
+  <a href="paper/scaleprobit.pdf"><img alt="Technical note PDF" src="https://img.shields.io/badge/Technical%20note-PDF-b31b1b?logo=adobeacrobatreader&logoColor=white"></a>
 </p>
 
 Pulling a heteroscedastic probit's ridge towards a fit on a large related sample, instead of towards zero, beat the
@@ -113,7 +113,7 @@ R'(0) = -\frac{2}{n}\,\mathrm{tr}\big(J^{-1}\Lambda\big) < 0, \qquad
 ```
 
 so a small pull always helps in expectation; whether CV finds it on a few dozen groups is an empirical question. The
-proof is in the [paper](paper/scaleprobit.pdf), Appendix A.
+proof is in the [technical note](paper/scaleprobit.pdf), Appendix A.
 
 ## Results
 
@@ -186,7 +186,7 @@ at once, at some subsampled size) **failed on both real datasets**.
   were tried and none kept; the one-SE rule picked source-only in every real subsample.
 - Cut for budget: a third real dataset, the R arms (`glmx::hetglm`, `glmtrans`), and several ablations. Every cut is
   listed in [`bench/results/SCOPE.md`](bench/results/SCOPE.md). The free scale intercept ablation was run afterwards,
-  post hoc, at the full season only (paper, Table 3).
+  post hoc, at the full season only (technical note, Table 3).
 
 ## Reproduce
 
@@ -208,7 +208,7 @@ python -m bench.variants.synthetic_one_se
 python -m bench.summarize
 PYTHONPATH=src:. python paper/results/refit_full.py
 PYTHONPATH=src:. python paper/results/ablate_free_intercept.py
-PYTHONPATH=src:. python paper/results/make_numbers.py      # every number in the paper
+PYTHONPATH=src:. python paper/results/make_numbers.py      # every number in the note
 PYTHONPATH=src:. python paper/figures/make.py              # the figures
 python examples/quickstart.py                              # one-minute synthetic demo
 ```
@@ -216,11 +216,13 @@ python examples/quickstart.py                              # one-minute syntheti
 ## Cite
 
 ```bibtex
-@misc{ouallaf2026scaleprobit,
+@techreport{ouallaf2026scaleprobit,
   author       = {Ouallaf, Moussa},
   title        = {A source-centred ridge for heteroscedastic probit models with few target rows},
+  institution  = {Husimi.ai},
+  type         = {Technical note (preprint, not peer-reviewed)},
   year         = {2026},
-  howpublished = {\url{https://github.com/tr4m0ryp/scaleprobit}},
+  url          = {https://github.com/tr4m0ryp/scaleprobit},
   note         = {Software: scaleprobit 0.1.0}
 }
 ```

@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use scaleprobit, please cite the paper in paper/scaleprobit.pdf."
+message: "If you use scaleprobit, please cite the technical note in paper/scaleprobit.pdf."
 title: "scaleprobit"
 version: 0.1.0
 date-released: 2026-11-04
@@ -11,7 +11,9 @@ authors:
     affiliation: Husimi.ai
     email: moussa@husimi.ai
 preferred-citation:
-  type: article
+  type: report
+  institution:
+    name: Husimi.ai
   title: "A source-centred ridge for heteroscedastic probit models with few target rows"
   authors:
     - family-names: Ouallaf
