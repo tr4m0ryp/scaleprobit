@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use scaleprobit, please cite the paper in paper/scaleprobit.pdf."
+title: "scaleprobit"
+version: 0.1.0
+date-released: 2026-11-04
+license: PolyForm-Noncommercial-1.0.0
+repository-code: "https://github.com/tr4m0ryp/scaleprobit"
+authors:
+  - family-names: Ouallaf
+    given-names: Moussa
+    affiliation: Husimi.ai
+    email: moussa@husimi.ai
+preferred-citation:
+  type: article
+  title: "A source-centred ridge for heteroscedastic probit models with few target rows"
+  authors:
+    - family-names: Ouallaf
+      given-names: Moussa
+      affiliation: Husimi.ai
+      email: moussa@husimi.ai
+  year: 2026
+  url: "https://github.com/tr4m0ryp/scaleprobit/blob/main/paper/scaleprobit.pdf"
